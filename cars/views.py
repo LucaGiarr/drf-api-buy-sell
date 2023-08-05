@@ -4,17 +4,20 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Car
 from .serializers import CarSerializer
+from drf_api_buy_sell.permissions import IsOwnerOrReadOnly
 
 
 class CarList(APIView):
     def get(self, request):
         cars = Car.objects.all()
-        serializer = CarSerializer(cars, many=True)
+        serializer = CarSerializer(
+            cars, many=True, context={'request': request})
         return Response(serializer.data)
 
 
 class CarDetail(APIView):
     serializer_class = CarSerializer
+    permission_classes = [IsOwnerOrReadOnly]
 
     def get_object(self, pk):
         try:
