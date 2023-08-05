@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
 
 
 class Car(models.Model):
@@ -152,6 +153,7 @@ class Car(models.Model):
     car_photo_3 = models.ImageField(upload_to='images/cars/', blank=True)
     car_photo_4 = models.ImageField(upload_to='images/cars/', blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
+    seller = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
 
     class Meta:
         ordering = ["-created_on"]
