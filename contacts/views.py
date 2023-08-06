@@ -1,33 +1,21 @@
-from django.http import Http404
-from rest_framework import status, permissions
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework import generics, permissions
 from .models import Contact
 from .serializers import ContactSerializer
 from drf_api_buy_sell.permissions import IsOwnerOrReadOnly
 
 
-class ContactList(APIView):
+class ContactList(generics.ListCreateAPIView):
     serializer_class = ContactSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ]
+    queryset = Contact.objects.all()
 
-    def get(self, request):
-        contacts = Contact.objects.all()
-        serializer = ContactSerializer(
-            contacts, many=True, context={'request': request})
-        return Response(serializer.data)
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
-    def post(self, request):
-        serializer = ContactSerializer(
-            data=request.data, context={'request': request}
-        )
-        if serializer.is_valid():
-            serializer.save(owner=request.user)
-            return Response(
-                serializer.data, status=status.HTTP_201_CREATED
-            )
-        return Response(
-            serializer.errors, status=status.HTTP_400_BAD_REQUEST
-            )
+
+class ContactDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ContactSerializer
+    permission_classes = [IsOwnerOrReadOnly]
+    queryset = Contact.objects.all()
