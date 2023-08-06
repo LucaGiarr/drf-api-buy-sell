@@ -1,5 +1,5 @@
 from django.http import Http404
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Car
@@ -8,11 +8,29 @@ from drf_api_buy_sell.permissions import IsOwnerOrReadOnly
 
 
 class CarList(APIView):
+    serializer_class = CarSerializer
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly
+    ]
+
     def get(self, request):
         cars = Car.objects.all()
         serializer = CarSerializer(
             cars, many=True, context={'request': request})
         return Response(serializer.data)
+
+    def post(self, request):
+        serializer = CarSerializer(
+            data=request.data, context={'request': request}
+        )
+        if serializer.is_valid():
+            serializer.save(owner=request.user)
+            return Response(
+                serializer.data, status=status.HTTP_201_CREATED
+            )
+        return Response(
+            serializer.errors, status=status.HTTP_400_BAD_REQUEST
+            )
 
 
 class CarDetail(APIView):
@@ -43,3 +61,10 @@ class CarDetail(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        car = self.get_object(pk)
+        car.delete()
+        return Response(
+            status=status.HTTP_204_NO_CONTENT
+        )
