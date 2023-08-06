@@ -8,7 +8,7 @@ class Profile(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=50, blank=False)
-    email = models.EmailField()
+    email = models.EmailField(max_length=100, blank=False)
     image = models.ImageField(
         upload_to='images/', default='../default_profile_pic'
     )
