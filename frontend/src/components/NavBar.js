@@ -2,12 +2,31 @@ import {Navbar, Container, Nav} from "react-bootstrap"
 import styles from "../styles/NavBar.module.css"
 import { NavLink } from 'react-router-dom'
 import { useCurrentUser } from '../contexts/CurrentUserContext';
+import Avatar from '../components/Avatar'
 
 const NavBar = () => {
 
   const currentUser = useCurrentUser();
 
-  const loggedInIcons = <>{currentUser?.username}</>;
+  const addAdvertIcon = (
+    <NavLink 
+    exact to="/advert/create" 
+    className={styles.NavLink} 
+    activeClassName={styles.Active}>
+      Sell your car
+    </NavLink>
+  );
+
+  const loggedInIcons = (
+  <>
+    <Avatar 
+      src={currentUser?.profile_image}
+      height={40}
+    />
+    {currentUser?.username}
+  </>
+  );
+
   const loggedOutIcons = (
     <>
       <Nav className="ml-auto text-center">
@@ -30,9 +49,14 @@ const NavBar = () => {
                     <NavLink exact to="/" className={styles.NavLink} activeClassName={styles.Active}>Home</NavLink>
 
                     {/* to be re-styled */}
-                    <NavLink exact to="/" className={styles.NavLink}>{currentUser ? loggedInIcons : loggedOutIcons}</NavLink>
+                    <NavLink 
+                    exact to="/" 
+                    className={styles.NavLink}>
+                      {currentUser ? loggedInIcons : loggedOutIcons}
+                    </NavLink>
                 </Nav>
             </Navbar.Collapse>
+            {addAdvertIcon}
         </Container>
         
     </Navbar>
