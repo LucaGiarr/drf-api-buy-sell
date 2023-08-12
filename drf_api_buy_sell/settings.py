@@ -62,7 +62,8 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if 'DEV' in os.environ else False
+# DEBUG = True if 'DEV' in os.environ else False
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST')]
 
