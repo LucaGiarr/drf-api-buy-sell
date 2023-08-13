@@ -23,16 +23,6 @@ const NavBar = () => {
     }
   }
 
-  const addAdvertIcon = (
-    <NavLink 
-    exact to="/advert/create" 
-    className={styles.NavLink}
-    activeClassName={styles.Active}
-    >
-      Sell your car
-    </NavLink>
-  );
-
   const loggedInIcons = (
   <>
     <NavLink
@@ -53,6 +43,14 @@ const NavBar = () => {
       onClick={handleSignOut}
     >
       Sign Out
+    </NavLink>
+
+    <NavLink 
+      exact to="/adverts/create" 
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+    >
+      Sell your car
     </NavLink>
   </>
   );
@@ -83,8 +81,6 @@ const NavBar = () => {
                     </NavLink>
 
                     {currentUser ? loggedInIcons : loggedOutIcons}
-
-                    {addAdvertIcon}
                 </Nav>
             </Navbar.Collapse>
             
