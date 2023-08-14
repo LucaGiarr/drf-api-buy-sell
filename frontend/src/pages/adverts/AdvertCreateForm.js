@@ -6,9 +6,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
+
 import styles from "../../styles/AdvertCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import Asset from "../../components/Asset";
 import { Image } from "react-bootstrap";
 
 function AdvertCreateForm() {
@@ -29,11 +31,11 @@ function AdvertCreateForm() {
     color: "",
     price: "",
     city: "",
-    car_photo: "",
-    car_photo_1: "",
-    car_photo_2: "",
-    car_photo_3: "",
-    car_photo_4: "",
+    image1: "",
+    image2: "",
+    // car_photo_2: "",
+    // car_photo_3: "",
+    // car_photo_4: "",
     description: "",
   });
 
@@ -52,26 +54,46 @@ function AdvertCreateForm() {
     color,
     price,
     city,
-    car_photo,
-    car_photo_1,
-    car_photo_2,
-    car_photo_3,
-    car_photo_4,
+    image1,
+    image2,
     description} = advertData;
 
-  const handleChange = (event) => {
-    setAdvertData({
-      ...advertData,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const handleChangeImage = (event) => {
-    if (event.target.files.length) {
-      URL.revokeObjectURL(car_photo);
+    const handleChange = (event) => {
       setAdvertData({
         ...advertData,
-        image: URL.createObjectURL(event.target.files[0]),
+        [event.target.name]: event.target.value,
+      });
+    };
+
+  // const handleChangeImage = (event) => {
+  //   if (event.target.files.length) {
+  //     URL.revokeObjectURL(image1);
+  //     setAdvertData({
+  //       ...advertData,
+  //       image1: URL.createObjectURL(event.target.files[0]),
+  //     });
+  //   }
+  // };
+
+  
+  const handleChangeImage = (event) => {
+
+    if (event.target.files) {
+      URL.revokeObjectURL(image1);
+      setAdvertData({
+        ...advertData,
+        image1: URL.createObjectURL(event.target.files[0]),
+      });
+    }
+  };
+
+  const handleChangeImage2 = (event) => {
+
+    if (event.target.files) {
+      URL.revokeObjectURL(image2);
+      setAdvertData({
+        ...advertData,
+        image2: URL.createObjectURL(event.target.files[0]),
       });
     }
   };
@@ -108,7 +130,7 @@ function AdvertCreateForm() {
       <Form.Group>
         <Form.Label>Year</Form.Label>
         <Form.Control
-          type="text"
+          type="number"
           name="year"
           value={year}
           onChange={handleChange}
@@ -126,7 +148,7 @@ function AdvertCreateForm() {
       <Form.Group>
         <Form.Label>Chilometers</Form.Label>
         <Form.Control
-          type="text"
+          type="number"
           name="chilometers"
           value={chilometers}
           onChange={handleChange}
@@ -135,7 +157,7 @@ function AdvertCreateForm() {
       <Form.Group>
         <Form.Label>Engine</Form.Label>
         <Form.Control
-          type="text"
+          type="number"
           name="engine"
           value={engine}
           onChange={handleChange}
@@ -162,7 +184,7 @@ function AdvertCreateForm() {
       <Form.Group>
         <Form.Label>Doors</Form.Label>
         <Form.Control
-          type="text"
+          type="number"
           name="doors"
           value={doors}
           onChange={handleChange}
@@ -189,7 +211,7 @@ function AdvertCreateForm() {
       <Form.Group>
         <Form.Label>Price</Form.Label>
         <Form.Control
-          type="text"
+          type="number"
           name="price"
           value={price}
           onChange={handleChange}
@@ -203,16 +225,9 @@ function AdvertCreateForm() {
           value={city}
           onChange={handleChange}
         />
-        </Form.Group>
-
-        <Form.File
-          id="image-upload"
-          accept="image/*"
-          onChange={handleChangeImage}
-        />
-
+      </Form.Group>
       <Form.Group>
-        <Form.Label>description</Form.Label>
+        <Form.Label>Description</Form.Label>
         <Form.Control
           as="textarea"
           rows={6}
@@ -221,7 +236,6 @@ function AdvertCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
-
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         create
       </Button>
@@ -237,16 +251,22 @@ function AdvertCreateForm() {
 
   return (
     <Form>
+      {/* <Row>
+        <Col md={5} lg={5}>
+          <Container className={appStyles.Content}>
+            {textFields}
+          </Container>
+        </Col>
+      </Row> */}
+
       <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              {car_photo ? (
+        <Col md={5} lg={5}>
+          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+          <Form.Group className="text-center">
+              {image1 ? (
                 <>
                   <figure>
-                    <Image className={appStyles.Image} src={car_photo} rounded />
+                    <Image className={appStyles.Image} src={image1} rounded />
                   </figure>
                   <div>
                     <Form.Label
@@ -259,13 +279,10 @@ function AdvertCreateForm() {
                 </>
               ) : (
                 <Form.Label
-                  className="d-flex justify-content-center"
+                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                   htmlFor="image-upload"
                 >
-                  {/* <Asset
-                    src={Upload}
-                    message="Click or tap to upload an image"
-                  /> */}
+                  Upload an image                  
                 </Form.Label>
               )}
 
@@ -275,11 +292,44 @@ function AdvertCreateForm() {
                 onChange={handleChangeImage}
               />
             </Form.Group>
-            <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
+      </Row>
+
+      <Row>
+        <Col md={5} lg={5}>
+          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+          <Form.Group className="text-center">
+              {image2 ? (
+                <>
+                  <figure>
+                    <Image className={appStyles.Image} src={image2} rounded />
+                  </figure>
+                  <div>
+                    <Form.Label
+                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                      htmlFor="image2-upload"
+                    >
+                      Change the image
+                    </Form.Label>
+                  </div>
+                </>
+              ) : (
+                <Form.Label
+                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  htmlFor="image2-upload"
+                >
+                  Upload an image                  
+                </Form.Label>
+              )}
+
+              <Form.File
+                id="image2-upload"
+                accept="image/*"
+                onChange={handleChangeImage2}
+              />
+            </Form.Group>
+          </Container>
         </Col>
       </Row>
     </Form>
