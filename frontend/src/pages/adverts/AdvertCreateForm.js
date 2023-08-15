@@ -10,7 +10,6 @@ import Container from "react-bootstrap/Container";
 import styles from "../../styles/AdvertCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
 import { Image } from "react-bootstrap";
 
 function AdvertCreateForm() {
@@ -31,11 +30,11 @@ function AdvertCreateForm() {
     color: "",
     price: "",
     city: "",
-    image1: "",
-    image2: "",
-    // car_photo_2: "",
-    // car_photo_3: "",
-    // car_photo_4: "",
+    car_photo: "",
+    car_photo_1: "",
+    car_photo_2: "",
+    car_photo_3: "",
+    car_photo_4: "",
     description: "",
   });
 
@@ -54,8 +53,11 @@ function AdvertCreateForm() {
     color,
     price,
     city,
-    image1,
-    image2,
+    car_photo,
+    car_photo_1,
+    car_photo_2,
+    car_photo_3,
+    car_photo_4,
     description} = advertData;
 
     const handleChange = (event) => {
@@ -65,35 +67,37 @@ function AdvertCreateForm() {
       });
     };
 
-  // const handleChangeImage = (event) => {
-  //   if (event.target.files.length) {
-  //     URL.revokeObjectURL(image1);
-  //     setAdvertData({
-  //       ...advertData,
-  //       image1: URL.createObjectURL(event.target.files[0]),
-  //     });
-  //   }
-  // };
-
-  
   const handleChangeImage = (event) => {
 
-    if (event.target.files) {
-      URL.revokeObjectURL(image1);
+    if (event.target.id === 'car-photo-upload') {
+      URL.revokeObjectURL(car_photo);
       setAdvertData({
         ...advertData,
-        image1: URL.createObjectURL(event.target.files[0]),
+        car_photo: URL.createObjectURL(event.target.files[0]),
       });
-    }
-  };
-
-  const handleChangeImage2 = (event) => {
-
-    if (event.target.files) {
-      URL.revokeObjectURL(image2);
+    } else if (event.target.id === 'car-photo1-upload') {
+      URL.revokeObjectURL(car_photo_1);
       setAdvertData({
         ...advertData,
-        image2: URL.createObjectURL(event.target.files[0]),
+        car_photo_1: URL.createObjectURL(event.target.files[0]),
+      });
+    } else if (event.target.id === 'car-photo2-upload') {
+      URL.revokeObjectURL(car_photo_2);
+      setAdvertData({
+        ...advertData,
+        car_photo_2: URL.createObjectURL(event.target.files[0]),
+      });
+    } else if (event.target.id === 'car-photo3-upload') {
+      URL.revokeObjectURL(car_photo_3);
+      setAdvertData({
+        ...advertData,
+        car_photo_3: URL.createObjectURL(event.target.files[0]),
+      });
+    } else if (event.target.id === 'car-photo4-upload') {
+      URL.revokeObjectURL(car_photo_4);
+      setAdvertData({
+        ...advertData,
+        car_photo_4: URL.createObjectURL(event.target.files[0]),
       });
     }
   };
@@ -236,7 +240,7 @@ function AdvertCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      {/* <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         create
       </Button>
       <Button
@@ -244,34 +248,34 @@ function AdvertCreateForm() {
         onClick={() => {}}
       >
         cancel
-      </Button>
+      </Button> */}
       
     </div>
   );
 
   return (
     <Form>
-      {/* <Row>
+      <Row>
         <Col md={5} lg={5}>
           <Container className={appStyles.Content}>
             {textFields}
           </Container>
         </Col>
-      </Row> */}
+      </Row>
 
       <Row>
         <Col md={5} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
           <Form.Group className="text-center">
-              {image1 ? (
+              {car_photo ? (
                 <>
                   <figure>
-                    <Image className={appStyles.Image} src={image1} rounded />
+                    <Image className={appStyles.Image} src={car_photo} rounded />
                   </figure>
                   <div>
                     <Form.Label
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="image-upload"
+                      htmlFor="car-photo-upload"
                     >
                       Change the image
                     </Form.Label>
@@ -280,14 +284,14 @@ function AdvertCreateForm() {
               ) : (
                 <Form.Label
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="image-upload"
+                  htmlFor="car-photo-upload"
                 >
                   Upload an image                  
                 </Form.Label>
               )}
 
               <Form.File
-                id="image-upload"
+                id="car-photo-upload"
                 accept="image/*"
                 onChange={handleChangeImage}
               />
@@ -295,20 +299,19 @@ function AdvertCreateForm() {
           </Container>
         </Col>
       </Row>
-
       <Row>
         <Col md={5} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
           <Form.Group className="text-center">
-              {image2 ? (
+              {car_photo_1 ? (
                 <>
                   <figure>
-                    <Image className={appStyles.Image} src={image2} rounded />
+                    <Image className={appStyles.Image} src={car_photo_1} rounded />
                   </figure>
                   <div>
                     <Form.Label
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="image2-upload"
+                      htmlFor="car-photo1-upload"
                     >
                       Change the image
                     </Form.Label>
@@ -317,22 +320,147 @@ function AdvertCreateForm() {
               ) : (
                 <Form.Label
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="image2-upload"
+                  htmlFor="car-photo1-upload"
                 >
                   Upload an image                  
                 </Form.Label>
               )}
 
               <Form.File
-                id="image2-upload"
+                id="car-photo1-upload"
                 accept="image/*"
-                onChange={handleChangeImage2}
+                onChange={handleChangeImage}
               />
             </Form.Group>
           </Container>
         </Col>
       </Row>
+      <Row>
+        <Col md={5} lg={5}>
+          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+          <Form.Group className="text-center">
+              {car_photo_2 ? (
+                <>
+                  <figure>
+                    <Image className={appStyles.Image} src={car_photo_2} rounded />
+                  </figure>
+                  <div>
+                    <Form.Label
+                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                      htmlFor="car-photo2-upload"
+                    >
+                      Change the image
+                    </Form.Label>
+                  </div>
+                </>
+              ) : (
+                <Form.Label
+                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  htmlFor="car-photo2-upload"
+                >
+                  Upload an image                  
+                </Form.Label>
+              )}
+
+              <Form.File
+                id="car-photo2-upload"
+                accept="image/*"
+                onChange={handleChangeImage}
+              />
+            </Form.Group>
+          </Container>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={5} lg={5}>
+          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+          <Form.Group className="text-center">
+              {car_photo_3 ? (
+                <>
+                  <figure>
+                    <Image className={appStyles.Image} src={car_photo_3} rounded />
+                  </figure>
+                  <div>
+                    <Form.Label
+                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                      htmlFor="car-photo3-upload"
+                    >
+                      Change the image
+                    </Form.Label>
+                  </div>
+                </>
+              ) : (
+                <Form.Label
+                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  htmlFor="car-photo3-upload"
+                >
+                  Upload an image                  
+                </Form.Label>
+              )}
+
+              <Form.File
+                id="car-photo3-upload"
+                accept="image/*"
+                onChange={handleChangeImage}
+              />
+            </Form.Group>
+          </Container>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={5} lg={5}>
+          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+          <Form.Group className="text-center">
+              {car_photo_4 ? (
+                <>
+                  <figure>
+                    <Image className={appStyles.Image} src={car_photo_4} rounded />
+                  </figure>
+                  <div>
+                    <Form.Label
+                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                      htmlFor="car-photo4-upload"
+                    >
+                      Change the image
+                    </Form.Label>
+                  </div>
+                </>
+              ) : (
+                <Form.Label
+                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  htmlFor="car-photo4-upload"
+                >
+                  Upload an image                  
+                </Form.Label>
+              )}
+
+              <Form.File
+                id="car-photo4-upload"
+                accept="image/*"
+                onChange={handleChangeImage}
+              />
+            </Form.Group>
+          </Container>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={5} lg={5}>
+          <Container className={`${appStyles.Content} text-center`}>
+            <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+              create
+            </Button>
+            <Button
+              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              onClick={() => {}}
+            >
+              cancel
+            </Button>
+          </Container>
+        </Col>
+        
+      </Row>
     </Form>
+    
   );
 }
 
