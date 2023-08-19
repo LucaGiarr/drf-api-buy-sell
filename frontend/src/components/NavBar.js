@@ -46,7 +46,7 @@ const NavBar = () => {
     </NavLink>
 
     <NavLink 
-      exact to="/adverts/create" 
+      exact to="/cars/create" 
       className={styles.NavLink}
       activeClassName={styles.Active}
     >
