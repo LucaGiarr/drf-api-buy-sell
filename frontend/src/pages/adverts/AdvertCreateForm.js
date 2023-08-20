@@ -11,6 +11,7 @@ import Container from "react-bootstrap/Container";
 import styles from "../../styles/AdvertCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import Alert from "react-bootstrap/Alert";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -170,6 +171,11 @@ function AdvertCreateForm() {
           placeholder="Make model"
         />
       </Form.Group>
+      {errors?.car_title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Make</Form.Label>
@@ -180,6 +186,11 @@ function AdvertCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.make?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Model</Form.Label>
@@ -190,9 +201,14 @@ function AdvertCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.model?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
-        <Form.Label>Year</Form.Label>
+        <Form.Label>Year (oldest 2000)</Form.Label>
         <Form.Control
           type="number"
           name="year"
@@ -200,6 +216,11 @@ function AdvertCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.year?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Condition</Form.Label>
@@ -224,6 +245,11 @@ function AdvertCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.chilometers?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Engine (cc)</Form.Label>
@@ -234,6 +260,11 @@ function AdvertCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.engine?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Transmission</Form.Label>
@@ -313,6 +344,11 @@ function AdvertCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.color?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Price (euro)</Form.Label>
@@ -323,6 +359,11 @@ function AdvertCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.price?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>City</Form.Label>
@@ -431,6 +472,11 @@ function AdvertCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.description?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       
     </div>
     
