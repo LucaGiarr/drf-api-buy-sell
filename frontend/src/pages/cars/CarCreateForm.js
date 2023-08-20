@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 
 
 
-import styles from "../../styles/AdvertCreateEditForm.module.css";
+import styles from "../../styles/CarCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Alert from "react-bootstrap/Alert";
@@ -16,7 +16,7 @@ import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
-function AdvertCreateForm() {
+function CarCreateForm() {
   const [errors, setErrors] = useState({});
 
   const [advertData, setAdvertData] = useState({
@@ -695,4 +695,4 @@ function AdvertCreateForm() {
   );
 }
 
-export default AdvertCreateForm;
+export default CarCreateForm;

@@ -4,7 +4,8 @@ import Container from 'react-bootstrap/Container';
 import {Route,Switch } from 'react-router-dom'
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
-import AdvertCreateForm from './pages/adverts/AdvertCreateForm';
+import CarCreateForm from './pages/cars/CarCreateForm';
+import CarPage from './pages/cars/CarPage';
 
 
 
@@ -22,7 +23,8 @@ function App() {
           <Route exact path="/" render={() => <h1>Home page</h1>} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
-          <Route exact path="/cars/create" render={() => <AdvertCreateForm />} />
+          <Route exact path="/cars/create" render={() => <CarCreateForm />} />
+          <Route exact path="/cars/:id" render={() => <CarPage />} />
 
           <Route render={() => <p>Page not found.</p>} />
         </Switch>
