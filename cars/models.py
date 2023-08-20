@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import datetime
 from django.contrib.auth.models import User
 
@@ -92,13 +93,7 @@ class Car(models.Model):
         ('Wexford', 'Wexford'),
         ('Wicklow', 'Wicklow'),
         ('Youghal', 'Youghal'),
-
-
     )
-
-    year_choice = []
-    for r in range(2000, (datetime.now().year+1)):
-        year_choice.append((r, r))
 
     door_choice = (
         ('2', '2'),
@@ -131,10 +126,11 @@ class Car(models.Model):
     )
 
     car_title = models.CharField(
-        default='Audi A1', max_length=255, blank=False)
+        max_length=255, blank=False)
     make = models.CharField(max_length=100, blank=False)
     model = models.CharField(max_length=100, blank=False)
-    year = models.IntegerField(('year'), choices=year_choice)
+    year = models.IntegerField(
+        validators=[MinValueValidator(1900), MaxValueValidator(2023)])
     condition = models.CharField(choices=condition_choice, max_length=100)
     chilometers = models.IntegerField()
     engine = models.CharField(max_length=100)
