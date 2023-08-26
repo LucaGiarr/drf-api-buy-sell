@@ -22,6 +22,7 @@ class CarSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Image height larger than 1024px.'
             )
+        return value
 
     def validate_car_photo_1(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -37,6 +38,7 @@ class CarSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Image height larger than 1024px.'
             )
+        return value
 
     def validate_car_photo_2(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -52,6 +54,7 @@ class CarSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Image height larger than 1024px.'
             )
+        return value
 
     def validate_car_photo_3(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -67,6 +70,7 @@ class CarSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Image height larger than 1024px.'
             )
+        return value
 
     def validate_car_photo_4(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -82,6 +86,7 @@ class CarSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Image height larger than 1024px.'
             )
+        return value
 
     def get_is_owner(self, obj):
         request = self.context['request']
