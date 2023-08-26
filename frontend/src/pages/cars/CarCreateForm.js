@@ -36,9 +36,9 @@ function CarCreateForm() {
     city: "Ardee",
     car_photo: "",
     car_photo_1: "",
-    // car_photo_2: "",
-    // car_photo_3: "",
-    // car_photo_4: "",
+    car_photo_2: "",
+    car_photo_3: "",
+    car_photo_4: "",
     description: "",
   });
 
@@ -59,13 +59,18 @@ function CarCreateForm() {
     city,
     car_photo,
     car_photo_1,
-    // car_photo_2,
-    // car_photo_3,
-    // car_photo_4,
+    car_photo_2,
+    car_photo_3,
+    car_photo_4,
     description
   } = advertData;
   
   const car_photoInput = useRef(null);
+  const car_photo1Input = useRef(null);
+  const car_photo2Input = useRef(null);
+  const car_photo3Input = useRef(null);
+  const car_photo4Input = useRef(null);
+
   const history = useHistory();
 
     const handleChange = (event) => {
@@ -85,33 +90,39 @@ function CarCreateForm() {
           car_photo: URL.createObjectURL(event.target.files[0]),
         });
       }
-      
-    } else if (event.target.id === 'car-photo1-upload') {
-      URL.revokeObjectURL(car_photo_1);
-      setAdvertData({
-        ...advertData,
-        car_photo_1: URL.createObjectURL(event.target.files[0]),
-      });
+    } else if (event.target.id === 'car_photo1-upload') {
+      if (event.target.files.length) {
+        URL.revokeObjectURL(car_photo_1);
+        setAdvertData({
+          ...advertData,
+          car_photo_1: URL.createObjectURL(event.target.files[0]),
+        });
+      }
+    } else if (event.target.id === 'car_photo2-upload') {
+      if (event.target.files.length) {
+        URL.revokeObjectURL(car_photo_2);
+        setAdvertData({
+          ...advertData,
+          car_photo_2: URL.createObjectURL(event.target.files[0]),
+        });
+      }
+    } else if (event.target.id === 'car_photo3-upload') {
+      if (event.target.files.length) {
+        URL.revokeObjectURL(car_photo_3);
+        setAdvertData({
+          ...advertData,
+          car_photo_3: URL.createObjectURL(event.target.files[0]),
+        });
+      }
+    } else if (event.target.id === 'car_photo4-upload') {
+      if (event.target.files.length) {
+        URL.revokeObjectURL(car_photo_4);
+        setAdvertData({
+          ...advertData,
+          car_photo_4: URL.createObjectURL(event.target.files[0]),
+        });
+      }
     }
-    // } else if (event.target.id === 'car-photo2-upload') {
-    //   URL.revokeObjectURL(car_photo_2);
-    //   setAdvertData({
-    //     ...advertData,
-    //     car_photo_2: URL.createObjectURL(event.target.files[0]),
-    //   });
-    // } else if (event.target.id === 'car-photo3-upload') {
-    //   URL.revokeObjectURL(car_photo_3);
-    //   setAdvertData({
-    //     ...advertData,
-    //     car_photo_3: URL.createObjectURL(event.target.files[0]),
-    //   });
-    // } else if (event.target.id === 'car-photo4-upload') {
-    //   URL.revokeObjectURL(car_photo_4);
-    //   setAdvertData({
-    //     ...advertData,
-    //     car_photo_4: URL.createObjectURL(event.target.files[0]),
-    //   });
-    // }
   };
 
   const handleSubmit = async (event) => {
@@ -134,22 +145,13 @@ function CarCreateForm() {
     formData.append("city", city);
     formData.append("description", description);
     formData.append("car_photo", car_photoInput.current.files[0]);
-    // formData.append("car_photo_1", car_photoInput.current.files[0]);
-    // formData.append("car_photo_2", car_photoInput.current.files[0]);
-    // formData.append("car_photo_3", car_photoInput.current.files[0]);
-    // formData.append("car_photo_4", car_photoInput.current.files[0]);
+    formData.append("car_photo_1", car_photo1Input.current.files[0]);
+    formData.append("car_photo_2", car_photo2Input.current.files[0]);
+    formData.append("car_photo_3", car_photo3Input.current.files[0]);
+    formData.append("car_photo_4", car_photo4Input.current.files[0]);
 
-    console.log(car_photoInput.current.files[0]);
-    console.log(formData);
     try {
       const { data } = await axiosReq.post("/cars/", formData);
-      // let url = "/cars/";
-      // const { data } = await axiosReq.post(url, formData, {
-      //   headers: {
-      //     'content-type': 'multipart/form-data'
-      //   }
-      // });
-      console.log(data);
       history.push(`/cars/${data.id}`);
     } catch (err) {
       console.log(err);
@@ -208,7 +210,7 @@ function CarCreateForm() {
       ))}
 
       <Form.Group>
-        <Form.Label>Year (oldest 2000)</Form.Label>
+        <Form.Label>Year</Form.Label>
         <Form.Control
           type="number"
           name="year"
@@ -526,10 +528,16 @@ function CarCreateForm() {
                 ref={car_photoInput}
               />
             </Form.Group>
+            {errors?.car_photo?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
           </Container>
         </Col>
       </Row>
-      {/* <Row>
+
+      <Row>
         <Col md={5} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
           <Form.Group className="text-center">
@@ -541,7 +549,7 @@ function CarCreateForm() {
                   <div>
                     <Form.Label
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car-photo1-upload"
+                      htmlFor="car_photo1-upload"
                     >
                       Change the image
                     </Form.Label>
@@ -550,22 +558,28 @@ function CarCreateForm() {
               ) : (
                 <Form.Label
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car-photo1-upload"
+                  htmlFor="car_photo1-upload"
                 >
                   Upload an image                  
                 </Form.Label>
               )}
 
               <Form.File
-                id="car-photo1-upload"
+                id="car_photo1-upload"
                 accept="image/*"
                 onChange={handleChangeImage}
-                ref={car_photoInput}
+                ref={car_photo1Input}
               />
             </Form.Group>
+            {errors?.car_photo_1?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
           </Container>
         </Col>
       </Row>
+
       <Row>
         <Col md={5} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
@@ -578,7 +592,7 @@ function CarCreateForm() {
                   <div>
                     <Form.Label
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car-photo2-upload"
+                      htmlFor="car_photo2-upload"
                     >
                       Change the image
                     </Form.Label>
@@ -587,21 +601,28 @@ function CarCreateForm() {
               ) : (
                 <Form.Label
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car-photo2-upload"
+                  htmlFor="car_photo2-upload"
                 >
                   Upload an image                  
                 </Form.Label>
               )}
 
               <Form.File
-                id="car-photo2-upload"
+                id="car_photo2-upload"
                 accept="image/*"
                 onChange={handleChangeImage}
+                ref={car_photo2Input}
               />
             </Form.Group>
+            {errors?.car_photo_2?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
           </Container>
         </Col>
       </Row>
+
       <Row>
         <Col md={5} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
@@ -614,7 +635,7 @@ function CarCreateForm() {
                   <div>
                     <Form.Label
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car-photo3-upload"
+                      htmlFor="car_photo3-upload"
                     >
                       Change the image
                     </Form.Label>
@@ -623,21 +644,28 @@ function CarCreateForm() {
               ) : (
                 <Form.Label
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car-photo3-upload"
+                  htmlFor="car_photo3-upload"
                 >
                   Upload an image                  
                 </Form.Label>
               )}
 
               <Form.File
-                id="car-photo3-upload"
+                id="car_photo3-upload"
                 accept="image/*"
                 onChange={handleChangeImage}
+                ref={car_photo3Input}
               />
             </Form.Group>
+            {errors?.car_photo_3?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
           </Container>
         </Col>
       </Row>
+
       <Row>
         <Col md={5} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
@@ -650,7 +678,7 @@ function CarCreateForm() {
                   <div>
                     <Form.Label
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car-photo4-upload"
+                      htmlFor="car_photo4-upload"
                     >
                       Change the image
                     </Form.Label>
@@ -659,21 +687,28 @@ function CarCreateForm() {
               ) : (
                 <Form.Label
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car-photo4-upload"
+                  htmlFor="car_photo4-upload"
                 >
                   Upload an image                  
                 </Form.Label>
               )}
 
               <Form.File
-                id="car-photo4-upload"
+                id="car_photo4-upload"
                 accept="image/*"
                 onChange={handleChangeImage}
+                ref={car_photo4Input}
               />
             </Form.Group>
+            {errors?.car_photo_4?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
           </Container>
         </Col>
-      </Row> */}
+      </Row>
+      
       <Row>
         <Col md={5} lg={5}>
           <Container className={`${appStyles.Content} text-center`}>
@@ -690,6 +725,7 @@ function CarCreateForm() {
         </Col>
         
       </Row>
+      
     </Form>
     
   );
