@@ -8,6 +8,7 @@ import Avatar from "../../components/Avatar";
 const CarAreaInfo = (props) => {
   const {
     owner,
+    id,
     make,
     model,
     price,
@@ -45,21 +46,23 @@ const CarAreaInfo = (props) => {
     </Row> */}
 
     <Row className={styles.row}>
-      
       <Col className={styles.col} lg={4} md={5} >
         <img className={styles.image} variant="top" src={car_photo} />
       </Col>
 
-      <Col>
-        <h4 className={styles.title}>{make} {model}</h4>
-        <p>{city} - {created_on}</p>
-        <p>&euro; {price}</p>
-        <span className="mr-4">{condition}</span>
-        <span className="mr-4">{year}</span>
-        <span className="mr-4">{chilometers}km</span>
-        <span className="mr-4">{body_style}</span>
-        <span>{engine}cc</span>
-      </Col>
+      <Link to={`/cars/${id}`}>
+        <Col>
+          <h4 className={styles.title}>{make} {model}</h4>
+          <p>{city} - {created_on}</p>
+          <p>&euro; {price}</p>
+          <span className="mr-4">{condition}</span>
+          <span className="mr-4">{year}</span>
+          <span className="mr-4">{chilometers}km</span>
+          <span className="mr-4">{body_style}</span>
+          <span>{engine}cc</span>
+        </Col>
+      </Link>
+      
     </Row>
         
     </>

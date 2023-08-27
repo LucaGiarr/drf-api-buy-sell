@@ -8,6 +8,7 @@ import CarCreateForm from './pages/cars/CarCreateForm';
 import CarPage from './pages/cars/CarPage';
 import CarsPage from './pages/cars/CarsPage';
 import Car from './pages/cars/Car';
+import ProfilePage from './pages/profiles/ProfilePage';
 
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/cars/create" render={() => <CarCreateForm />} />
           <Route exact path="/cars/:id" render={() => <CarPage />} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
 
           <Route render={() => <p>Page not found.</p>} />
         </Switch>

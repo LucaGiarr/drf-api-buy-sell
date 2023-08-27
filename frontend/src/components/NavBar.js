@@ -26,7 +26,7 @@ const NavBar = () => {
   const loggedInIcons = (
   <>
     <NavLink
-      to="/profile"
+      to={`/profiles/${currentUser?.profile_id}`}
       className={styles.NavLink}
       activeClassName={styles.Active}
     >

@@ -70,6 +70,7 @@ function CarsPage({ message, filter = "" }) {
               <InfiniteScroll
                 children={cars.results.map((car) => (
                   <Car key={car.id} {...car} setCars={setCars} />
+                  
                 ))}
                 dataLength={cars.results.length}
                 loader={<Asset spinner />}
@@ -78,7 +79,7 @@ function CarsPage({ message, filter = "" }) {
               />
             ) : (
               <Container className={appStyles.Content}>
-                <p>No results found. Please try again.</p>
+                <p>No results found. Please adjust the search keyword and try again.</p>
               </Container>
             )}
           </>
