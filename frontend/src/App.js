@@ -6,6 +6,8 @@ import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
 import CarCreateForm from './pages/cars/CarCreateForm';
 import CarPage from './pages/cars/CarPage';
+import CarsPage from './pages/cars/CarsPage';
+import Car from './pages/cars/Car';
 
 
 
@@ -20,7 +22,8 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <h1>Home page</h1>} />
+          <Route exact path="/" render={() => (<CarsPage message="No results found.Adjust the search keyword." />)} />
+          <Route exact path="/car" render={() => <Car />} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/cars/create" render={() => <CarCreateForm />} />
