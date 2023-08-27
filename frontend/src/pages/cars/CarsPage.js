@@ -14,11 +14,13 @@ import styles from "../../styles/CarsPage.module.css";
 import { useLocation } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
-// import NoResults from "../../assets/no-results.png";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
+
 
 function CarsPage({ message, filter = "" }) {
   
-    const [cars, setCars] = useState({ results: [] });
+  const [cars, setCars] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
@@ -65,9 +67,15 @@ function CarsPage({ message, filter = "" }) {
         {hasLoaded ? (
           <>
             {cars.results.length ? (
-              cars.results.map((car) => (
-                <Car key={car.id} {...car} setCars={setCars} />
-              ))
+              <InfiniteScroll
+                children={cars.results.map((car) => (
+                  <Car key={car.id} {...car} setCars={setCars} />
+                ))}
+                dataLength={cars.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!cars.next}
+                next={() => fetchMoreData(cars, setCars)}
+              />
             ) : (
               <Container className={appStyles.Content}>
                 <p>No results found. Please try again.</p>
