@@ -53,20 +53,26 @@ function ProfilePage() {
         <Col lg={3} className="text-lg-left">
           <Image
             className={styles.ProfileImage}
-            roundedCircle
             src={profile?.image}
+            height={150}
           />
         </Col>
         <Col lg={6}>
           <h3 className="m-2">{profile?.owner}</h3>
           <Row className="justify-content-center no-gutters">
-            <Col xs={3} className="my-2">
-              <div>{profile?.posts_count}</div>
+            <Col xs={4} className="my-2">
               <span>Cars for sale</span>
+              <div>{profile?.cars_count}</div>
+            </Col>
+          </Row>
+          <Row className="justify-content-center no-gutters">
+            <Col xs={4} className="my-2">
+              <span>Contact me</span>
+              <div>{profile?.email}</div>
             </Col>
           </Row>
         </Col>
-        <Col lg={3} className="text-lg-right">
+        {/* <Col lg={3} className="text-lg-right">
           {currentUser &&
             !is_owner &&
             (profile?.following_id ? (
@@ -84,8 +90,7 @@ function ProfilePage() {
                 follow
               </Button>
             ))}
-        </Col>
-        {profile?.content && <Col className="p-3">{profile.content}</Col>}
+        </Col> */}
       </Row>
     </>
   );
@@ -93,7 +98,7 @@ function ProfilePage() {
   const mainProfilePosts = (
     <>
       <hr />
-      <p className="text-center">Profile owner's posts</p>
+      <p className="text-center">Profile owner's cars</p>
       <hr />
     </>
   );
