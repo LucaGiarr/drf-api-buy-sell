@@ -20,8 +20,19 @@ import {
 } from "../../contexts/ProfileDataContext";
 import { Button, Image } from "react-bootstrap";
 
+import Car from "../cars/Car";
+
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
+
+// import NoResults from "../../assets/no-results.png";
+
+
+
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [profileCars, setProfileCars] = useState({ results: [] });
+
   const currentUser = useCurrentUser();
   const { id } = useParams();
   const setProfileData = useSetProfileData();
@@ -32,13 +43,15 @@ function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }] = await Promise.all([
+        const [{ data: pageProfile }, { data: profileCars }] = await Promise.all([
           axiosReq.get(`/profiles/${id}/`),
+          axiosReq.get(`/cars/?owner__profile=${id}`),
         ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
+        setProfileCars(profileCars);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -72,34 +85,28 @@ function ProfilePage() {
             </Col>
           </Row>
         </Col>
-        {/* <Col lg={3} className="text-lg-right">
-          {currentUser &&
-            !is_owner &&
-            (profile?.following_id ? (
-              <Button
-                className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-                onClick={() => {}}
-              >
-                unfollow
-              </Button>
-            ) : (
-              <Button
-                className={`${btnStyles.Button} ${btnStyles.Black}`}
-                onClick={() => {}}
-              >
-                follow
-              </Button>
-            ))}
-        </Col> */}
       </Row>
     </>
   );
 
-  const mainProfilePosts = (
+  const mainProfileCars = (
     <>
       <hr />
-      <p className="text-center">Profile owner's cars</p>
+      <p className="text-center">{profile?.owner}'s cars</p>
       <hr />
+      {profileCars.results.length ? (
+        <InfiniteScroll
+          children={profileCars.results.map((car) => (
+            <Car key={car.id} {...car} setCars={setProfileCars} />
+          ))}
+          dataLength={profileCars.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!profileCars.next}
+          next={() => fetchMoreData(profileCars, setProfileCars)}
+        />
+      ) : (
+        <p className="text-center">{profile?.owner} has no cars yet.</p>
+      )}
     </>
   );
 
@@ -111,7 +118,7 @@ function ProfilePage() {
           {hasLoaded ? (
             <>
               {mainProfile}
-              {mainProfilePosts}
+              {mainProfileCars}
             </>
           ) : (
             <Asset spinner />
