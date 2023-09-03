@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "../../styles/Car.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Button, Media, Container, Row, Col } from "react-bootstrap";
+// import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Row, Col } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import Avatar from "../../components/Avatar";
+// import Avatar from "../../components/Avatar";
 
 const CarAreaInfo = (props) => {
   const {
-    owner,
+    // owner,
     id,
     make,
     model,
@@ -18,51 +18,40 @@ const CarAreaInfo = (props) => {
     condition,
     year,
     chilometers,
-    body_style,
+    fuel_type,
+    transmission,
     engine,
-    carPage,
   } = props;
 
-  const currentUser = useCurrentUser();
-  const is_owner = currentUser?.username === owner;
+  // const currentUser = useCurrentUser();
+  // const is_owner = currentUser?.username === owner;
 
   return (
     <>
-    {/* <Row className={styles.row}>
-      <Card>
-        <Col className={styles.col} lg={4} md={5} >
-          <Card.Img className={styles.image} variant="top" src={car_photo} />
-        </Col>
-
-        <Col>
-          <Card.Body>
-            <Card.Title className={styles.title}>{make} {model}</Card.Title>
-            <Card.Text>{city} - {created_on}</Card.Text>
-            <Card.Text>&euro; {price}</Card.Text>
-            <Card.Text>{condition} {year} {chilometers}km {body_style} {engine}cc</Card.Text>
-          </Card.Body>
-        </Col>
-      </Card>
-    </Row> */}
-
     <Row className={styles.row}>
       <Col className={styles.col} lg={4} md={5} >
-        <img className={styles.image} variant="top" src={car_photo} />
+        <img className={styles.image} variant="top" src={car_photo} alt="car" />
       </Col>
 
       <Link to={`/cars/${id}`}>
-        <Col>
-          <h4 className={styles.title}>{make} {model}</h4>
-          <p>{city} - {created_on}</p>
-          <p>&euro; {price}</p>
-          <span className="mr-4">{condition}</span>
-          <span className="mr-4">{year}</span>
-          <span className="mr-4">{chilometers}km</span>
-          <span className="mr-4">{body_style}</span>
-          <span>{engine}cc</span>
+        <Col className={styles.info}>
+          <div>
+            <h4 className={styles.title}>{make} {model}</h4>
+            <p className={styles.city_date}>{city} - {created_on}</p>
+            <p className={styles.price}>&euro; {price}</p>
+            <span className={styles.features}>Condition: {condition}</span>
+            <span className={styles.features}>Mileage: {chilometers}km</span>
+            <span className={styles.features}>Year: {year}</span>
+            
+          </div>
+          <div className="mt-2">
+            <span className={styles.features}>Engine: {engine}cc</span>
+            <span className={styles.features}>Fuel type: {fuel_type}</span>
+            <span className={styles.features}>Transmission: {transmission}</span>
+            
+          </div>
         </Col>
       </Link>
-      
     </Row>
         
     </>

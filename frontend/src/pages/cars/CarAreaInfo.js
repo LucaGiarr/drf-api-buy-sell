@@ -43,52 +43,58 @@ const CarAreaInfo = (props) => {
 
   return (
     <>
-    <h3>
-        <strong>{car_title}</strong>
-    </h3>
-    
-    <p>
-      <strong>City: </strong>
-      <span>{city}</span>
-    </p>
-    <p>
-      <strong>Created on: </strong>
-      <span>{created_on}</span>
-    </p>
-    <hr></hr>
-    <h3>
-        <strong>&euro; {price}</strong>
-    </h3>
-    <hr></hr>
+    <div className={styles.info}>
+      <h3 className={styles.title}>
+          <strong>{car_title}</strong>
+      </h3>
+      <p>
+        <i class="pl-0 fa-solid fa-location-dot"></i>
+        <span>{city}</span>
+      </p>
+      <p>
+        <strong>Created on: </strong>
+        <span>{created_on}</span>
+      </p>
 
-    <Media className="align-items-center justify-content-between">
-      <Link to={`/profiles/${profile_id}`}>
-        <Avatar src={profile_image} height={55} />
-        <strong>{owner}</strong>
-      </Link>
-    </Media>
+      <hr></hr>
+      <h3>
+          <strong className={styles.price}>&euro; {price}</strong>
+      </h3>
+      <hr></hr>
 
-    <div className="d-flex align-items-center">
+      <Media className="align-items-center justify-content-between">
+        <Link to={`/profiles/${profile_id}`}>
+          <Avatar src={profile_image} height={55} />
+          <strong>{owner}</strong>
+        </Link>
+      </Media>
 
-      {is_owner ? (
-        <div>
-          <MoreDropdown
-          handleEdit={handleEdit}
-          handleDelete={handleDelete}
-        />
-        <p>
-          is owner
-        </p>
-        </div>
-        
-        
-      ) : (
-        <p>
-          is NOT owner
-        </p>
-      )}
+      <div className="d-flex align-items-center">
 
+        {is_owner ? (
+          <div>
+            <MoreDropdown
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
+          <p>
+            is owner
+          </p>
+          </div>
+          
+          
+        ) : (
+          <p>
+            is NOT owner
+          </p>
+        )}
+
+      </div>
     </div>
+    
+    
+    
+    
     
     </>
   );

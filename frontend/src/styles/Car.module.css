@@ -2,25 +2,60 @@
     font-weight: bolder;
     /* font-size: 1.5rem; */
     padding-top: 20px;
+    color: black;
+}
+
+.title:hover{
+    color: grey;
+    text-decoration: underline;
 }
 
 .row{
-    width: 100%;
-    height: 250px;
+    /* width: 100%; */
+    height: 220px;
     border: 0.5px solid lightgray;
+    border-radius: 10px;
     margin-bottom: 15px;
+    margin-left: 1px;
+    margin-right: 1px;
     /* background-color: red; */
 }
 
 .col{
+    display: flex;
     height: 100%;
+    max-width: 350px;
+    margin: 0;
     padding: 0;
-    /* background-color: black; */
+    border-radius: 10px 0 0 10px;
+    /* background-color: red; */
 }
 
 .image {
-    width: 75%;
-    object-fit: contain;
+    width: 100%;
+    object-fit: cover;
     max-height: 100%;
-    border-radius: 0;
+    border-radius: 10px 0 0 10px;
+    margin-left: -1px;
+}
+
+.info{
+    padding-left: 50px;
+}
+
+.city_date{
+    color: grey;
+    font-weight: bold;
+}
+
+.price{
+    color: blue;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.features{
+    color: gray;
+    display: inline-flex;
+    width: 160px;
 }
