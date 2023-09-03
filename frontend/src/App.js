@@ -8,6 +8,7 @@ import CarCreateForm from './pages/cars/CarCreateForm';
 import CarPage from './pages/cars/CarPage';
 import CarsPage from './pages/cars/CarsPage';
 import Car from './pages/cars/Car';
+import CarEditForm from './pages/cars/CarEditForm';
 import ProfilePage from './pages/profiles/ProfilePage';
 import UsernameForm from './pages/profiles/UsernameForm';
 import UserPasswordForm from './pages/profiles/UserPasswordForm';
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/cars/create" render={() => <CarCreateForm />} />
           <Route exact path="/cars/:id" render={() => <CarPage />} />
+          <Route exact path="/cars/:id/edit" render={() => <CarEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />} />
           <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />} />
