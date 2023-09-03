@@ -143,11 +143,16 @@ class Car(models.Model):
     price = models.IntegerField()
     city = models.CharField(choices=city_choice, max_length=100)
     description = models.TextField()
-    car_photo = models.ImageField(upload_to='images/cars/', blank=True)
-    car_photo_1 = models.ImageField(upload_to='images/cars/', blank=True)
-    car_photo_2 = models.ImageField(upload_to='images/cars/', blank=True)
-    car_photo_3 = models.ImageField(upload_to='images/cars/', blank=True)
-    car_photo_4 = models.ImageField(upload_to='images/cars/', blank=True)
+    car_photo = models.ImageField(
+        upload_to='images/cars/', default='../default_no_image', blank=True)
+    car_photo_1 = models.ImageField(
+        upload_to='images/cars/', default='../default_no_image', blank=True)
+    car_photo_2 = models.ImageField(
+        upload_to='images/cars/', default='../default_no_image', blank=True)
+    car_photo_3 = models.ImageField(
+        upload_to='images/cars/', default='../default_no_image', blank=True)
+    car_photo_4 = models.ImageField(
+        upload_to='images/cars/', default='../default_no_image', blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
