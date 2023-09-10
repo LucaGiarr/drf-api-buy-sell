@@ -487,29 +487,59 @@ function CarCreateForm() {
     
   );
 
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col md={5} lg={5}>
-          <Container className={appStyles.Content}>
-            {textFields}
-          </Container>
-        </Col>
-      </Row>
+  const image1Field = (
+    <div className={appStyles.Content}>
+      <Form.Group className="text-center">
+        {car_photo ? (
+          <>
+            <figure>
+              <Image className={appStyles.Image} src={car_photo} rounded />
+            </figure>
+            <div>
+              <Form.Label
+                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                htmlFor="car_photo-upload"
+              >
+                Change the image
+              </Form.Label>
+            </div>
+          </>
+        ) : (
+          <Form.Label
+          className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+            htmlFor="car_photo-upload"
+          >
+            Upload an image                  
+          </Form.Label>
+        )}
 
-      <Row>
-        <Col md={5} lg={5}>
-          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+        <Form.File
+          id="car_photo-upload"
+          accept="image/*"
+          onChange={handleChangeImage}
+          ref={car_photoInput}
+        />
+      </Form.Group>
+      {errors?.car_photo?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+    </div>
+  );
+
+  const image2Field = (
+    <div className={appStyles.Content}>
           <Form.Group className="text-center">
-              {car_photo ? (
+              {car_photo_1 ? (
                 <>
                   <figure>
-                    <Image className={appStyles.Image} src={car_photo} rounded />
+                    <Image className={appStyles.Image} src={car_photo_1} rounded />
                   </figure>
                   <div>
                     <Form.Label
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car_photo-upload"
+                      htmlFor="car_photo1-upload"
                     >
                       Change the image
                     </Form.Label>
@@ -518,29 +548,146 @@ function CarCreateForm() {
               ) : (
                 <Form.Label
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car_photo-upload"
+                  htmlFor="car_photo1-upload"
                 >
                   Upload an image                  
                 </Form.Label>
               )}
 
               <Form.File
-                id="car_photo-upload"
+                id="car_photo1-upload"
                 accept="image/*"
                 onChange={handleChangeImage}
-                ref={car_photoInput}
+                ref={car_photo1Input}
               />
             </Form.Group>
-            {errors?.car_photo?.map((message, idx) => (
+            {errors?.car_photo_1?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
             ))}
-          </Container>
-        </Col>
-      </Row>
+    </div>
+  );
 
-      <Row>
+  const image3Field = (
+    <div className={appStyles.Content}>
+      <Form.Group className="text-center">
+              {car_photo_2 ? (
+                <>
+                  <figure>
+                    <Image className={appStyles.Image} src={car_photo_2} rounded />
+                  </figure>
+                  <div>
+                    <Form.Label
+                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                      htmlFor="car_photo2-upload"
+                    >
+                      Change the image
+                    </Form.Label>
+                  </div>
+                </>
+              ) : (
+                <Form.Label
+                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  htmlFor="car_photo2-upload"
+                >
+                  Upload an image                  
+                </Form.Label>
+              )}
+
+              <Form.File
+                id="car_photo2-upload"
+                accept="image/*"
+                onChange={handleChangeImage}
+                ref={car_photo2Input}
+              />
+            </Form.Group>
+            {errors?.car_photo_2?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+    </div>
+  );
+
+  const image4Field = (
+    <div className={appStyles.Content}>
+      <Form.Group className="text-center">
+              {car_photo_4 ? (
+                <>
+                  <figure>
+                    <Image className={appStyles.Image} src={car_photo_4} rounded />
+                  </figure>
+                  <div>
+                    <Form.Label
+                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                      htmlFor="car_photo4-upload"
+                    >
+                      Change the image
+                    </Form.Label>
+                  </div>
+                </>
+              ) : (
+                <Form.Label
+                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  htmlFor="car_photo4-upload"
+                >
+                  Upload an image                  
+                </Form.Label>
+              )}
+
+              <Form.File
+                id="car_photo4-upload"
+                accept="image/*"
+                onChange={handleChangeImage}
+                ref={car_photo4Input}
+              />
+            </Form.Group>
+            {errors?.car_photo_4?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+    </div>
+  );
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Container className={styles.Container}>
+        <Row className="d-flex justify-content-center">
+          <Col md={7} lg={5}>
+            <div className={appStyles.Content}>
+              {textFields}
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      
+
+      <Container className={styles.Container}>
+        <Row className="d-flex justify-content-center"> 
+          <Col md={7} lg={5}>
+            {image1Field}
+          </Col>
+        </Row>
+        <Row className="d-flex justify-content-center"> 
+          <Col md={7} lg={5}>
+            {image2Field}
+          </Col>
+        </Row>
+        <Row className="d-flex justify-content-center"> 
+          <Col md={7} lg={5}>
+            {image3Field}
+          </Col>
+        </Row>
+        <Row className="d-flex justify-content-center"> 
+          <Col md={7} lg={5}>
+            {image4Field}
+          </Col>
+        </Row>
+      </Container>
+
+      {/* <Row>
         <Col md={5} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
           <Form.Group className="text-center">
@@ -710,9 +857,27 @@ function CarCreateForm() {
             ))}
           </Container>
         </Col>
-      </Row>
+      </Row> */}
       
-      <Row>
+      <Container className={styles.Container}>
+      <Row className="d-flex justify-content-center">
+        <Col md={7} lg={5}>
+          <div className={`${appStyles.Content} text-center`}>
+            <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+              create
+            </Button>
+            <Button
+              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              onClick={() => history.goBack()}
+            >
+              cancel
+            </Button>
+          </div>
+        </Col>
+        
+      </Row>
+      </Container>
+      {/* <Row>
         <Col md={5} lg={5}>
           <Container className={`${appStyles.Content} text-center`}>
             <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
@@ -727,7 +892,7 @@ function CarCreateForm() {
           </Container>
         </Col>
         
-      </Row>
+      </Row> */}
       
     </Form>
     
