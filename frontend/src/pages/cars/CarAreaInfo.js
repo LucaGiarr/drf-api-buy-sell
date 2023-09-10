@@ -8,6 +8,7 @@ import Avatar from "../../components/Avatar";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import { EditDeleteButtons } from "../../components/MoreButtons";
 
 
 
@@ -44,9 +45,24 @@ const CarAreaInfo = (props) => {
   return (
     <>
     <div className={styles.info}>
-      <h3 className={styles.title}>
+      <div className="d-inline">
+        <h3 className={styles.title}>
           <strong>{car_title}</strong>
-      </h3>
+        </h3>
+        
+        {is_owner ? (
+        <>
+          <EditDeleteButtons
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
+        </>
+        ) : (
+          <></>
+        )}
+      
+      </div>
+      
       <p>
         <i class="pl-0 fa-solid fa-location-dot"></i>
         <span>{city}</span>
@@ -68,34 +84,7 @@ const CarAreaInfo = (props) => {
           <strong>{owner}</strong>
         </Link>
       </Media>
-
-      <div className="d-flex align-items-center">
-
-        {is_owner ? (
-          <div>
-            <MoreDropdown
-            handleEdit={handleEdit}
-            handleDelete={handleDelete}
-          />
-          <p>
-            is owner
-          </p>
-          </div>
-          
-          
-        ) : (
-          <p>
-            is NOT owner
-          </p>
-        )}
-
-      </div>
     </div>
-    
-    
-    
-    
-    
     </>
   );
 };

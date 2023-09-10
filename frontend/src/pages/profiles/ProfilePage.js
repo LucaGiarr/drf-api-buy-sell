@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 
 import Asset from "../../components/Asset";
 
@@ -26,6 +27,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import { EditDeleteButtons, ProfileEditButton } from "../../components/MoreButtons";
 
 // import NoResults from "../../assets/no-results.png";
 
@@ -64,27 +66,31 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
-      {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
+      {profile?.is_owner}
       <Row noGutters className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
           <Image
             className={styles.ProfileImage}
             src={profile?.image}
-            height={150}
+            height={180}
           />
         </Col>
-        <Col lg={6}>
-          <h3 className="m-2">{profile?.owner}</h3>
+        <Col lg={8}>
+          <h3>{profile?.owner}</h3>
+          {profile?.is_owner ? (
+            <ProfileEditButton id={profile?.id} />
+          ) : (
+            <></>
+          )}
+          
           <Row className="justify-content-center no-gutters">
             <Col xs={4} className="my-2">
-              <span>Cars for sale</span>
-              <div>{profile?.cars_count}</div>
+              <div>Cars for sale: {profile?.cars_count}</div>
             </Col>
           </Row>
           <Row className="justify-content-center no-gutters">
             <Col xs={4} className="my-2">
-              <span>Contact me</span>
-              <div>{profile?.email}</div>
+              <span>Contact me: {profile?.email}</span>
             </Col>
           </Row>
         </Col>
@@ -95,7 +101,7 @@ function ProfilePage() {
   const mainProfileCars = (
     <>
       <hr />
-      <p className="text-center">{profile?.owner}'s cars</p>
+      <h3 className="text-center">{profile?.owner}'s cars</h3>
       <hr />
       {profileCars.results.length ? (
         <InfiniteScroll
@@ -114,24 +120,23 @@ function ProfilePage() {
   );
 
   return (
-    <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        {/* <PopularProfiles mobile /> */}
-        <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {mainProfile}
-              {mainProfileCars}
-            </>
-          ) : (
-            <Asset spinner />
-          )}
+    <>
+      {hasLoaded ? (
+        <>
+        <Container>
+          {mainProfile}
         </Container>
-      </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        {/* <PopularProfiles /> */}
-      </Col>
-    </Row>
+
+        <Container>
+          {mainProfileCars}
+        </Container>
+          
+        </>
+      ) : (
+        <Asset spinner />
+      )}
+    </>
+    
   );
 }
 
