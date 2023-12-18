@@ -578,7 +578,7 @@ function CarEditForm() {
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                       htmlFor="car_photo-upload"
                     >
-                      Change the image
+                      Change the Image
                     </Form.Label>
                   </div>
                 </>
@@ -587,7 +587,7 @@ function CarEditForm() {
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                   htmlFor="car_photo-upload"
                 >
-                  Upload an image                  
+                  Upload an Image                  
                 </Form.Label>
               )}
 
@@ -621,7 +621,7 @@ function CarEditForm() {
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                       htmlFor="car_photo1-upload"
                     >
-                      Change the image
+                      Change the Image
                     </Form.Label>
                   </div>
                 </>
@@ -630,7 +630,7 @@ function CarEditForm() {
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                   htmlFor="car_photo1-upload"
                 >
-                  Upload an image                  
+                  Upload an Image                  
                 </Form.Label>
               )}
 
@@ -664,7 +664,7 @@ function CarEditForm() {
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                       htmlFor="car_photo2-upload"
                     >
-                      Change the image
+                      Change the Image
                     </Form.Label>
                   </div>
                 </>
@@ -673,7 +673,7 @@ function CarEditForm() {
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                   htmlFor="car_photo2-upload"
                 >
-                  Upload an image                  
+                  Upload an Image                  
                 </Form.Label>
               )}
 
@@ -707,7 +707,7 @@ function CarEditForm() {
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                       htmlFor="car_photo3-upload"
                     >
-                      Change the image
+                      Change the Image
                     </Form.Label>
                   </div>
                 </>
@@ -716,7 +716,7 @@ function CarEditForm() {
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                   htmlFor="car_photo3-upload"
                 >
-                  Upload an image                  
+                  Upload an Image                  
                 </Form.Label>
               )}
 
@@ -750,7 +750,7 @@ function CarEditForm() {
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                       htmlFor="car_photo4-upload"
                     >
-                      Change the image
+                      Change the Image
                     </Form.Label>
                   </div>
                 </>
@@ -759,7 +759,7 @@ function CarEditForm() {
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                   htmlFor="car_photo4-upload"
                 >
-                  Upload an image                  
+                  Upload an Image                  
                 </Form.Label>
               )}
 
@@ -783,13 +783,13 @@ function CarEditForm() {
         <Col md={5} lg={5}>
           <Container className={`${appStyles.Content} text-center`}>
             <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-              edit
+              Save
             </Button>
             <Button
               className={`${btnStyles.Button} ${btnStyles.Blue}`}
               onClick={() => history.goBack()}
             >
-              cancel
+              Cancel
             </Button>
           </Container>
         </Col>

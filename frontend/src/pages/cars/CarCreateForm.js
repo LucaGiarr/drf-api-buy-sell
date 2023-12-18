@@ -864,13 +864,13 @@ function CarCreateForm() {
         <Col md={7} lg={5}>
           <div className={`${appStyles.Content} text-center`}>
             <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-              create
+              Create
             </Button>
             <Button
               className={`${btnStyles.Button} ${btnStyles.Blue}`}
               onClick={() => history.goBack()}
             >
-              cancel
+              Cancel
             </Button>
           </div>
         </Col>
