@@ -35,11 +35,14 @@ const CarAreaInfo = (props) => {
   };
   
   const handleDelete = async () => {
-    try {
-      await axiosRes.delete(`/cars/${id}/`);
-      history.goBack();
-    } catch (err) {
-      console.log(err);
+    const shouldDelete = window.confirm('Are you sure you want to delete this advert?');
+    if (shouldDelete) {
+      try {
+        await axiosRes.delete(`/cars/${id}/`);
+        history.goBack();
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
