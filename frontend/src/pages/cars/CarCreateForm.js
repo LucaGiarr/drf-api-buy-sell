@@ -147,11 +147,28 @@ function CarCreateForm() {
     formData.append("price", price);
     formData.append("city", city);
     formData.append("description", description);
-    formData.append("car_photo", car_photoInput.current.files[0]);
-    formData.append("car_photo_1", car_photo1Input.current.files[0]);
-    formData.append("car_photo_2", car_photo2Input.current.files[0]);
-    formData.append("car_photo_3", car_photo3Input.current.files[0]);
-    formData.append("car_photo_4", car_photo4Input.current.files[0]);
+
+    if (car_photoInput.current.files.length) {
+      formData.append("car_photo", car_photoInput.current.files[0]);
+    }
+    if (car_photoInput.current.files.length) {
+      formData.append("car_photo1", car_photo1Input.current.files[0]);
+    }
+    if (car_photoInput.current.files.length) {
+      formData.append("car_photo2", car_photo2Input.current.files[0]);
+    }
+    if (car_photoInput.current.files.length) {
+      formData.append("car_photo3", car_photo3Input.current.files[0]);
+    }
+    if (car_photoInput.current.files.length) {
+      formData.append("car_photo4", car_photo4Input.current.files[0]);
+    }
+      
+    // formData.append("car_photo", car_photoInput.current.files[0]);
+    // formData.append("car_photo_1", car_photo1Input.current.files[0]);
+    // formData.append("car_photo_2", car_photo2Input.current.files[0]);
+    // formData.append("car_photo_3", car_photo3Input.current.files[0]);
+    // formData.append("car_photo_4", car_photo4Input.current.files[0]);
 
     try {
       const { data } = await axiosReq.post("/cars/", formData);
@@ -162,6 +179,7 @@ function CarCreateForm() {
         setErrors(err.response?.data);
       }
     }
+    console.log(formData);
   };
 
   const textFields = (
@@ -487,7 +505,7 @@ function CarCreateForm() {
     
   );
 
-  const image1Field = (
+  const imageField = (
     <div className={appStyles.Content}>
       <Form.Group className="text-center">
         {car_photo ? (
@@ -528,7 +546,7 @@ function CarCreateForm() {
     </div>
   );
 
-  const image2Field = (
+  const image1Field = (
     <div className={appStyles.Content}>
           <Form.Group className="text-center">
               {car_photo_1 ? (
@@ -569,7 +587,7 @@ function CarCreateForm() {
     </div>
   );
 
-  const image3Field = (
+  const image2Field = (
     <div className={appStyles.Content}>
       <Form.Group className="text-center">
               {car_photo_2 ? (
@@ -603,6 +621,47 @@ function CarCreateForm() {
               />
             </Form.Group>
             {errors?.car_photo_2?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+    </div>
+  );
+
+  const image3Field = (
+    <div className={appStyles.Content}>
+      <Form.Group className="text-center">
+              {car_photo_3 ? (
+                <>
+                  <figure>
+                    <Image className={appStyles.Image} src={car_photo_3} rounded />
+                  </figure>
+                  <div>
+                    <Form.Label
+                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                      htmlFor="car_photo3-upload"
+                    >
+                      Change the image
+                    </Form.Label>
+                  </div>
+                </>
+              ) : (
+                <Form.Label
+                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  htmlFor="car_photo3-upload"
+                >
+                  Upload an image                  
+                </Form.Label>
+              )}
+
+              <Form.File
+                id="car_photo3-upload"
+                accept="image/*"
+                onChange={handleChangeImage}
+                ref={car_photo3Input}
+              />
+            </Form.Group>
+            {errors?.car_photo_3?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
@@ -665,6 +724,11 @@ function CarCreateForm() {
       
 
       <Container className={styles.Container}>
+      <Row className="d-flex justify-content-center"> 
+          <Col md={7} lg={5}>
+            {imageField}
+          </Col>
+        </Row>
         <Row className="d-flex justify-content-center"> 
           <Col md={7} lg={5}>
             {image1Field}
@@ -686,6 +750,8 @@ function CarCreateForm() {
           </Col>
         </Row>
       </Container>
+
+      {/* from here */}
 
       {/* <Row>
         <Col md={5} lg={5}>
@@ -858,20 +924,23 @@ function CarCreateForm() {
           </Container>
         </Col>
       </Row> */}
+
+      {/* To here */}
       
       <Container className={styles.Container}>
       <Row className="d-flex justify-content-center">
         <Col md={7} lg={5}>
           <div className={`${appStyles.Content} text-center`}>
+            <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+            </Button>
             <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
               Create
             </Button>
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-              onClick={() => history.goBack()}
-            >
-              Cancel
-            </Button>
+            
           </div>
         </Col>
         
