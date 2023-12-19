@@ -42,13 +42,11 @@ const CarAreaInfo = (props) => {
             <span className={styles.features}>Condition: {condition}</span>
             <span className={styles.features}>Mileage: {chilometers}km</span>
             <span className={styles.features}>Year: {year}</span>
-            
           </div>
           <div className="mt-2">
             <span className={styles.features}>Engine: {engine}cc</span>
             <span className={styles.features}>Fuel type: {fuel_type}</span>
             <span className={styles.features}>Transmission: {transmission}</span>
-            
           </div>
         </Col>
       </Link>

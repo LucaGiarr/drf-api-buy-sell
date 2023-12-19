@@ -556,16 +556,19 @@ function CarEditForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col md={5} lg={5}>
-          <Container className={appStyles.Content}>
-            {textFields}
-          </Container>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col md={5} lg={5}>
+      <Container className={styles.Container}>
+        <Row className="d-flex justify-content-center">
+          <Col md={7} lg={5}>
+            <div className={appStyles.Content}>
+              {textFields}
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      
+      <Container className={styles.Container}>
+      <Row className="d-flex justify-content-center">
+        <Col md={7} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
           <Form.Group className="text-center">
               {car_photo ? (
@@ -607,8 +610,8 @@ function CarEditForm() {
         </Col>
       </Row>
 
-      <Row>
-        <Col md={5} lg={5}>
+      <Row className="d-flex justify-content-center">
+        <Col md={7} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
           <Form.Group className="text-center">
               {car_photo_1 ? (
@@ -650,8 +653,8 @@ function CarEditForm() {
         </Col>
       </Row>
 
-      <Row>
-        <Col md={5} lg={5}>
+      <Row className="d-flex justify-content-center">
+        <Col md={7} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
           <Form.Group className="text-center">
               {car_photo_2 ? (
@@ -693,8 +696,8 @@ function CarEditForm() {
         </Col>
       </Row>
 
-      <Row>
-        <Col md={5} lg={5}>
+      <Row className="d-flex justify-content-center">
+        <Col md={7} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
           <Form.Group className="text-center">
               {car_photo_3 ? (
@@ -736,8 +739,8 @@ function CarEditForm() {
         </Col>
       </Row>
 
-      <Row>
-        <Col md={5} lg={5}>
+      <Row className="d-flex justify-content-center">
+        <Col md={7} lg={5}>
           <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
           <Form.Group className="text-center">
               {car_photo_4 ? (
@@ -778,9 +781,11 @@ function CarEditForm() {
           </Container>
         </Col>
       </Row>
-      
-      <Row>
-        <Col md={5} lg={5}>
+      </Container>
+
+      <Container className={styles.Container}>
+      <Row className="d-flex justify-content-center">
+        <Col md={7} lg={5}>
           <Container className={`${appStyles.Content} text-center`}>
             <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
               Save
@@ -793,9 +798,8 @@ function CarEditForm() {
             </Button>
           </Container>
         </Col>
-        
       </Row>
-      
+      </Container>
     </Form>
     
   );
