@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/CarAreaInfo.module.css";
+// import styles from "../../styles/CarAreaInfo.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Media } from "react-bootstrap";
 import { Link } from 'react-router-dom';
@@ -7,8 +7,9 @@ import Avatar from "../../components/Avatar";
 
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
-import { MoreDropdown } from "../../components/MoreDropdown";
+// import { MoreDropdown } from "../../components/MoreDropdown";
 import { EditDeleteButtons } from "../../components/MoreButtons";
+import styles from "../../styles/CarAreaInfo.module.css";
 
 
 
@@ -49,17 +50,6 @@ const CarAreaInfo = (props) => {
         <h3 className={styles.title}>
           <strong>{car_title}</strong>
         </h3>
-        
-        {is_owner ? (
-        <>
-          <EditDeleteButtons
-          handleEdit={handleEdit}
-          handleDelete={handleDelete}
-        />
-        </>
-        ) : (
-          <></>
-        )}
       
       </div>
       
@@ -84,6 +74,24 @@ const CarAreaInfo = (props) => {
           <strong>{owner}</strong>
         </Link>
       </Media>
+
+      {is_owner ? (
+        <div className={styles.butt_container}>
+        <EditDeleteButtons
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
+        </div>
+        ) : (
+          <>
+          <div className={styles.contact_me}>
+            <Link to={`/profiles/${profile_id}`}>
+              <strong>Ask for more info</strong>
+            </Link>
+          </div>
+          
+          </>
+        )}
     </div>
     </>
   );

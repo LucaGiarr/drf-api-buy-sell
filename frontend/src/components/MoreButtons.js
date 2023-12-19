@@ -19,11 +19,13 @@ import Button from "react-bootstrap/Button";
 export const EditDeleteButtons = ({ handleEdit, handleDelete }) => {
   return (
     <>
+    
     <Button
     variant="link"
     onClick={handleEdit}
     aria-label="edit">
-      <i className="fas fa-edit" />
+      <i className="fas fa-edit" /> 
+      <span>Edit</span>
     </Button>
 
     <Button
@@ -31,6 +33,7 @@ export const EditDeleteButtons = ({ handleEdit, handleDelete }) => {
     onClick={handleDelete}
     aria-label="delete">
       <i className="fas fa-trash-alt" />
+      <span>Delete</span>
     </Button>
     </>
   );

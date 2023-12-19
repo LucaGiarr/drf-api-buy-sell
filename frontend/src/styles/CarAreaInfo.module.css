@@ -8,8 +8,23 @@
 
 i {
   text-decoration: none;
+  font-size: 20px;
+  padding-left: 0;
+}
+
+button span {
+  color: #212529;
 }
 
 .price{
   color: blue;
+}
+
+.butt_container {
+  margin-left: -12px;
+  margin-top: 10px;
+}
+
+.contact_me{
+  margin-top: 15px;
 }
