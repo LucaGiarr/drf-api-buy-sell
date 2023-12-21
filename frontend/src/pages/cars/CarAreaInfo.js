@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 // import { MoreDropdown } from "../../components/MoreDropdown";
 import { EditDeleteButtons } from "../../components/MoreButtons";
+import { ChatComponent } from "../../components/Chat";
 import styles from "../../styles/CarAreaInfo.module.css";
 
 
@@ -44,6 +45,7 @@ const CarAreaInfo = (props) => {
         console.log(err);
       }
     }
+    
   };
 
   return (
@@ -88,9 +90,10 @@ const CarAreaInfo = (props) => {
         ) : (
           <>
           <div className={styles.contact_me}>
-            <Link to={`/profiles/${profile_id}`}>
-              <strong>Ask for more info</strong>
-            </Link>
+            <strong>Leave a message</strong>
+            <ChatComponent
+              sender={currentUser.username}
+              receiver={owner} />
           </div>
           
           </>

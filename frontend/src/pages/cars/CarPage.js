@@ -23,7 +23,7 @@ function CarPage() {
           axiosReq.get(`/cars/${id}`),
         ]);
         setCar({ results: [car] });
-        console.log(car);
+        // console.log(car);
       } catch (err) {
         console.log(err);
       }
