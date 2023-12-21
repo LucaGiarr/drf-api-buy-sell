@@ -91,7 +91,6 @@ INSTALLED_APPS = [
 
     'profiles',
     'cars',
-    'contacts',
 ]
 
 SITE_ID = 1
