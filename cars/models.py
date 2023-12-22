@@ -163,7 +163,9 @@ class Car(models.Model):
         return self.car_title
 
 class Message(models.Model):
-    sender = models.CharField(max_length=100)
-    receiver = models.CharField(max_length=100)
+    sender = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="sender")
+    receiver = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="receiver")
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+    car_id = models.ForeignKey(Car, on_delete=models.DO_NOTHING)
+

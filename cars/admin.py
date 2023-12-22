@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Car
+from .models import Car, Message
 
 
 class CarAdmin(admin.ModelAdmin):
@@ -10,5 +10,9 @@ class CarAdmin(admin.ModelAdmin):
                      'fuel_type',)
     list_per_page = 25
 
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('car_id', 'sender', 'receiver', 'content', 'timestamp')
+
 
 admin.site.register(Car, CarAdmin)
+admin.site.register(Message, MessageAdmin)
