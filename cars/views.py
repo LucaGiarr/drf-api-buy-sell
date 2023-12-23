@@ -54,5 +54,23 @@ class CarDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Car.objects.all()
 
 class MessageViewSet(viewsets.ModelViewSet):
-    queryset = Message.objects.all()
     serializer_class = MessageSerializer
+
+    def get_queryset(self):
+        car_id = self.request.query_params.get('car_id')
+        sender = self.request.query_params.get('sender')
+        receiver = self.request.query_params.get('receiver')
+
+        queryset = Message.objects.all()
+
+        if car_id:
+            queryset = queryset.filter(car_id=car_id)
+
+        if sender:
+            queryset = queryset.filter(sender=sender)
+
+        if receiver:
+            queryset = queryset.filter(receiver=receiver)
+
+        return queryset
+

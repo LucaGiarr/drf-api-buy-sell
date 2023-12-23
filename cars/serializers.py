@@ -99,4 +99,4 @@ class CarSerializer(serializers.ModelSerializer):
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
-        fields = ('sender', 'receiver', 'car_id', 'content')
+        fields = ('sender', 'receiver', 'car_id', 'content', 'timestamp')

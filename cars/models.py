@@ -169,3 +169,7 @@ class Message(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     car_id = models.ForeignKey(Car, on_delete=models.DO_NOTHING)
 
+    def get_messages_by_filters(cls, car_id, sender, receiver):
+        return cls.objects.filter(car__id=car_id, sender=sender, receiver=receiver)
+
+

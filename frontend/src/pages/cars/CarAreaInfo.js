@@ -30,7 +30,6 @@ const CarAreaInfo = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
-  // console.log(currentUser.username);
 
   const handleEdit = () => {
     history.push(`/cars/${id}/edit`);
@@ -48,6 +47,8 @@ const CarAreaInfo = (props) => {
     }
     
   };
+  // console.log('before passing sender: ',currentUser);
+  // console.log('before passing receiver: ',profile_id);
 
   return (
     <>
@@ -92,15 +93,17 @@ const CarAreaInfo = (props) => {
           <>
           </>
         )}
+
         <div className={styles.contact_me}>
-            <strong>Leave a message</strong>
-            <ChatComponent
-              sender={currentUser}
-              receiver={profile_id}
-              carId={id} 
-              />
+          <strong>Leave a message</strong>
+          <ChatComponent
+            sender={currentUser}
+            receiver={profile_id}
+            carId={id}
+            />
               
-          </div>
+        </div>
+
     </div>
     </>
   );
