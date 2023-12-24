@@ -21,8 +21,6 @@ export const ChatComponent = ({ sender, receiver, carId }) => {
     }
   };
 
-  
-
   const sendMessage = async () => {
     try {
       await axios.post('/api/messages/', {
@@ -39,16 +37,13 @@ export const ChatComponent = ({ sender, receiver, carId }) => {
     }
   };
 
-  console.log(messages);
-
-
   return (
     <div>
       <div>
         {Array.isArray(messages) ? (
             messages.map((msg) => <div key={msg.id}>
               <p>{msg.timestamp}</p>
-              <strong>{msg.sender}</strong>
+              <strong>{msg.sender_username}</strong>
               <p>{msg.content}</p>
               </div>)
           ) : (
@@ -60,6 +55,7 @@ export const ChatComponent = ({ sender, receiver, carId }) => {
         value={newMessage}
         onChange={(e) => setNewMessage(e.target.value)}
       />
+      
       <button onClick={sendMessage}>Send</button>
     </div>
   );

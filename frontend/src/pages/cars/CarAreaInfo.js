@@ -47,8 +47,6 @@ const CarAreaInfo = (props) => {
     }
     
   };
-  // console.log('before passing sender: ',currentUser);
-  // console.log('before passing receiver: ',profile_id);
 
   return (
     <>
@@ -82,6 +80,8 @@ const CarAreaInfo = (props) => {
         </Link>
       </Media>
 
+      
+
       {is_owner ? (
         <div className={styles.butt_container}>
         <EditDeleteButtons
@@ -96,11 +96,26 @@ const CarAreaInfo = (props) => {
 
         <div className={styles.contact_me}>
           <strong>Leave a message</strong>
-          <ChatComponent
+          {/* <ChatComponent
             sender={currentUser}
             receiver={profile_id}
             carId={id}
+            /> */}
+
+          {!currentUser ? (
+            <p>
+              You need to <Link to="/signin">Sign in</Link> to send a message.
+            </p>
+          ) : (
+            <div>
+            <ChatComponent
+              sender={currentUser}
+              receiver={profile_id}
+              carId={id}
             />
+            </div>
+            
+          )}
               
         </div>
 
@@ -110,3 +125,4 @@ const CarAreaInfo = (props) => {
 };
 
 export default CarAreaInfo;
+
