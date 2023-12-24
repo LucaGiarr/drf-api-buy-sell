@@ -80,8 +80,6 @@ const CarAreaInfo = (props) => {
         </Link>
       </Media>
 
-      
-
       {is_owner ? (
         <div className={styles.butt_container}>
         <EditDeleteButtons
@@ -96,15 +94,10 @@ const CarAreaInfo = (props) => {
 
         <div className={styles.contact_me}>
           <strong>Leave a message</strong>
-          {/* <ChatComponent
-            sender={currentUser}
-            receiver={profile_id}
-            carId={id}
-            /> */}
 
           {!currentUser ? (
             <p>
-              You need to <Link to="/signin">Sign in</Link> to send a message.
+              You need to <Link to="/signin" className={styles.link_text}>Sign in</Link> to send a message.
             </p>
           ) : (
             <div>

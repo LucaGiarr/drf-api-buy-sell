@@ -1,0 +1,42 @@
+.chat_container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.message_container {
+  margin-bottom: 10px;
+}
+
+.message_time {
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.message_sender {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.input_container {
+  margin-top: 10px;
+}
+
+.input_field {
+  width: 80%;
+  padding: 8px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+}
+
+.send_button {
+  padding: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+}

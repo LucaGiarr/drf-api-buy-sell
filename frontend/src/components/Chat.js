@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import styles from "../styles/ChatComponent.module.css";
+
 
 export const ChatComponent = ({ sender, receiver, carId }) => {
   const [messages, setMessages] = useState([]);
@@ -38,25 +40,28 @@ export const ChatComponent = ({ sender, receiver, carId }) => {
   };
 
   return (
-    <div>
+    <div className={styles.chat_container}>
       <div>
         {Array.isArray(messages) ? (
-            messages.map((msg) => <div key={msg.id}>
-              <p>{msg.timestamp}</p>
-              <strong>{msg.sender_username}</strong>
+            messages.map((msg) => <div key={msg.id} className={styles.message_container}>
+              <p className={styles.message_time}>{msg.timestamp}</p>
+              <p className={styles.message_sender}>{msg.sender_username}</p>
               <p>{msg.content}</p>
               </div>)
           ) : (
             <p>No messages available.</p>
           )}
       </div>
-      <input
-        type="text"
-        value={newMessage}
-        onChange={(e) => setNewMessage(e.target.value)}
-      />
+      <div className={styles.input_container}>
+        <input
+          type="text"
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+        />
+      </div>
       
-      <button onClick={sendMessage}>Send</button>
+      
+      <button onClick={sendMessage} className={styles.send_button}>Send</button>
     </div>
   );
 };
