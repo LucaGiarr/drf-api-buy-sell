@@ -45,10 +45,10 @@ const Car = (props) => {
     <hr></hr>
 
     <h4>
-        Description
+      Description
     </h4>
     <Container>
-      <p>
+      <p className={styles.description}>
         {description}
       </p>
     </Container>
