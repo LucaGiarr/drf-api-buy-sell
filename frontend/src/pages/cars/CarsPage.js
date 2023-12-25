@@ -93,6 +93,49 @@ function CarsPage({ message, filter = "" }) {
     </Row>
   );
 
+  // return (
+  //   <Container fluid className={appStyles.Content}>
+  //     <Row>
+  //       <Col xs={12} md={3} className="py-2">
+  //         <i className={`fas fa-search ${styles.SearchIcon}`} />
+  //         <Form
+  //           className={styles.SearchBar}
+  //           onSubmit={(event) => event.preventDefault()}
+  //         >
+  //           <Form.Control
+  //             value={query}
+  //             onChange={(event) => setQuery(event.target.value)}
+  //             type="text"
+  //             placeholder="Search cars"
+  //           />
+  //         </Form>
+  //       </Col>
+
+  //       <Col xs={12} md={9} className="py-2">
+  //         {hasLoaded ? (
+  //           <>
+  //             {cars.results.length ? (
+  //               <InfiniteScroll
+  //                 children={cars.results.map((car) => (
+  //                   <Car key={car.id} {...car} setCars={setCars} />
+  //                 ))}
+  //                 dataLength={cars.results.length}
+  //                 loader={<Asset spinner />}
+  //                 hasMore={!!cars.next}
+  //                 next={() => fetchMoreData(cars, setCars)}
+  //               />
+  //             ) : (
+  //               <p>No results found. Please adjust the search keyword and try again.</p>
+  //             )}
+  //           </>
+  //         ) : (
+  //           <Asset spinner />
+  //         )}
+  //       </Col>
+  //     </Row>
+  //   </Container>
+  // );
+
 }
 
 export default CarsPage;

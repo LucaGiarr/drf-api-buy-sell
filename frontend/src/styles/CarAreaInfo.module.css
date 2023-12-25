@@ -4,6 +4,7 @@
 
 .title {
   color: black;
+  text-transform: capitalize;
 }
 
 i {
@@ -30,5 +31,10 @@ button span {
 }
 
 .link_text{
+  color: #3366FF;
+  transition: none;
+}
+
+.link_text:hover{
   color: #3366FF;
 }
