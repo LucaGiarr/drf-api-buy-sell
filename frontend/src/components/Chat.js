@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import styles from "../styles/ChatComponent.module.css";
+import btnStyles from "../styles/Button.module.css";
 
 
 export const ChatComponent = ({ sender, receiver, carId }) => {
@@ -57,11 +58,12 @@ export const ChatComponent = ({ sender, receiver, carId }) => {
           type="text"
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
+          className={styles.input_field}
         />
       </div>
       
-      
-      <button onClick={sendMessage} className={styles.send_button}>Send</button>
+      <button onClick={sendMessage} className={`${btnStyles.Button} ${btnStyles.Wide}`}>Send</button>
+
     </div>
   );
 };

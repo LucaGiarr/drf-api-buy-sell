@@ -47,7 +47,8 @@ export const ProfileEditButton = ({ id }) => {
     variant="link"
     onClick={() => history.push(`/profiles/${id}/edit`)}
           aria-label="edit-profile"
-          ><i className="fas fa-edit" /> Edit image & Email
+          ><i className="fas fa-edit" /> 
+          <span>Edit image & Email</span>
     </Button>
 
     <Button 
@@ -55,7 +56,7 @@ export const ProfileEditButton = ({ id }) => {
     onClick={() => history.push(`/profiles/${id}/edit/username`)}
           aria-label="edit-username">
           <i className="far fa-id-card" />
-          Change Username
+          <span>Change Username</span>
     </Button>
 
     <Button 
@@ -64,7 +65,7 @@ export const ProfileEditButton = ({ id }) => {
           aria-label="edit-password"
         >
           <i className="fas fa-key" />
-          Change Password
+          <span>Change Password</span>
     </Button>
     </>
   );

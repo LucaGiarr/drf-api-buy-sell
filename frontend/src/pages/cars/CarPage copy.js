@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+// import Container from "react-bootstrap/Container";
 import { useMediaQuery } from "react-responsive";
 
+// import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -41,25 +43,28 @@ function CarPage() {
         <CarImages {...car.results[0]} />
       </Col>
 
-      <Col lg={5} className="d-none d-lg-block p-0 p-lg-2">
-        <CarAreaInfo {...car.results[0]} CarPage />
-      </Col>
+      {isBelowLargeScreen ? (
+          <Col className="py-2 p-0 p-lg-2" lg={5}>
+            <CarAreaInfo {...car.results[0]} CarPage />
+            <CarAreaInfoChat {...car.results[0]} />
+          </Col>
+        ) : (
+          <>
+            <Col lg={5} className="d-none d-lg-block p-0 p-lg-2">
+              <CarAreaInfo {...car.results[0]} CarPage />
+              
+            </Col>
+            <Row>
+              <CarAreaInfoChat {...car.results[0]} />
+            </Row>
+          </>
+          
+        )}
+
     </Row>
-      
-
-    {isBelowLargeScreen ? (
-        <Col className="py-2 p-0 p-lg-2" lg={5}>
-          <CarAreaInfo {...car.results[0]} CarPage />
-        </Col>
-      ) : (
-        <>            
-        </>
-      )}
-
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={7}>
         <CarDetailsSection {...car.results[0]} />
-        <CarAreaInfoChat {...car.results[0]} />
       </Col>
     </Row>
     </>

@@ -1,5 +1,4 @@
 import React from "react";
-// import styles from "../../styles/CarAreaInfo.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Media } from "react-bootstrap";
 import { Link } from 'react-router-dom';
@@ -7,9 +6,7 @@ import Avatar from "../../components/Avatar";
 
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
-// import { MoreDropdown } from "../../components/MoreDropdown";
 import { EditDeleteButtons } from "../../components/MoreButtons";
-import { ChatComponent } from "../../components/Chat";
 import styles from "../../styles/CarAreaInfo.module.css";
 
 
@@ -24,7 +21,6 @@ const CarAreaInfo = (props) => {
     price,
     city,
     created_on,
-    carPage,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -45,7 +41,6 @@ const CarAreaInfo = (props) => {
         console.log(err);
       }
     }
-    
   };
 
   return (
@@ -55,9 +50,7 @@ const CarAreaInfo = (props) => {
         <h3 className={styles.title}>
           <strong>{car_title}</strong>
         </h3>
-      
       </div>
-      
       <p>
         <i class="pl-0 fa-solid fa-location-dot"></i>
         <span>{city}</span>
@@ -68,9 +61,11 @@ const CarAreaInfo = (props) => {
       </p>
 
       <hr></hr>
+
       <h3>
           <strong className={styles.price}>&euro; {price}</strong>
       </h3>
+
       <hr></hr>
 
       <Media className="align-items-center justify-content-between">
@@ -91,31 +86,9 @@ const CarAreaInfo = (props) => {
           <>
           </>
         )}
-
-        <div className={styles.contact_me}>
-          <strong>Leave a message</strong>
-
-          {!currentUser ? (
-            <p>
-              You need to <Link to="/signin" className={styles.link_text}>Sign in</Link> to send a message.
-            </p>
-          ) : (
-            <div>
-            <ChatComponent
-              sender={currentUser}
-              receiver={profile_id}
-              carId={id}
-            />
-            </div>
-            
-          )}
-              
-        </div>
-
     </div>
     </>
   );
 };
 
 export default CarAreaInfo;
-

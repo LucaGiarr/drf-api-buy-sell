@@ -14,7 +14,7 @@ i {
 }
 
 button span {
-  color: #212529;
+  color: #3366FF;
 }
 
 .price{
@@ -37,4 +37,8 @@ button span {
 
 .link_text:hover{
   color: #3366FF;
+}
+
+.title_message_box{
+  margin-left: 10px;
 }

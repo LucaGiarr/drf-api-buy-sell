@@ -20,7 +20,7 @@ const Car = (props) => {
 
   return (
     <>
-    <h4>
+    <h4 className={styles.title_section}>
         Car Details
     </h4>
     <Container>
@@ -44,7 +44,7 @@ const Car = (props) => {
 
     <hr></hr>
 
-    <h4>
+    <h4 className={styles.title_section}>
       Description
     </h4>
     <Container>
@@ -55,7 +55,7 @@ const Car = (props) => {
 
     <hr></hr>
 
-    <h4>
+    <h4 className={styles.title_section}>
         Vehicle History
     </h4>
     <Container>

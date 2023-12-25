@@ -29,8 +29,6 @@ import { fetchMoreData } from "../../utils/utils";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 import { EditDeleteButtons, ProfileEditButton } from "../../components/MoreButtons";
 
-// import NoResults from "../../assets/no-results.png";
-
 
 
 function ProfilePage() {
@@ -67,16 +65,16 @@ function ProfilePage() {
   const mainProfile = (
     <>
       {profile?.is_owner}
-      <Row noGutters className="px-3 text-center">
+      <Row noGutters className="text-center">
         <Col lg={3} className="text-lg-left">
           <Image
-            className={styles.ProfileImage}
+            className={styles.profile_image}
             src={profile?.image}
-            height={180}
+            // height={180}
           />
         </Col>
-        <Col lg={8}>
-          <h3>{profile?.owner}</h3>
+        <Col lg={7}>
+          <h3 className={styles.owner_name}>{profile?.owner}</h3>
           {profile?.is_owner ? (
             <ProfileEditButton id={profile?.id} />
           ) : (
@@ -84,12 +82,12 @@ function ProfilePage() {
           )}
           
           <Row className="justify-content-center no-gutters">
-            <Col xs={4} className="my-2">
-              <div>Cars for sale: {profile?.cars_count}</div>
+            <Col xs={12} className="my-2">
+              <span>Cars for sale: {profile?.cars_count}</span>
             </Col>
           </Row>
           <Row className="justify-content-center no-gutters">
-            <Col xs={4} className="my-2">
+            <Col xs={12} className="my-2">
               <span>Contact me: {profile?.email}</span>
             </Col>
           </Row>
@@ -103,19 +101,23 @@ function ProfilePage() {
       <hr />
       <h3 className="text-center">{profile?.owner}'s cars</h3>
       <hr />
-      {profileCars.results.length ? (
-        <InfiniteScroll
-          children={profileCars.results.map((car) => (
-            <Car key={car.id} {...car} setCars={setProfileCars} />
-          ))}
-          dataLength={profileCars.results.length}
-          loader={<Asset spinner />}
-          hasMore={!!profileCars.next}
-          next={() => fetchMoreData(profileCars, setProfileCars)}
-        />
-      ) : (
-        <p className="text-center">{profile?.owner} has no cars yet.</p>
-      )}
+      <Row className="h-100">
+        <Col className="py-2 p-0 p-lg-2">
+          {profileCars.results.length ? (
+            <InfiniteScroll
+              children={profileCars.results.map((car) => (
+                <Car key={car.id} {...car} setCars={setProfileCars} />
+              ))}
+              dataLength={profileCars.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!profileCars.next}
+              next={() => fetchMoreData(profileCars, setProfileCars)}
+            />
+          ) : (
+            <p className="text-center">{profile?.owner} has no cars yet.</p>
+          )}
+        </Col>
+      </Row>
     </>
   );
 

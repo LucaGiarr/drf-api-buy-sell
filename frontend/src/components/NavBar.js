@@ -7,6 +7,8 @@ import Avatar from './Avatar'
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
+import Logo from "../images/Logo.png"
+
 const NavBar = () => {
 
   const currentUser = useCurrentUser();
@@ -69,7 +71,11 @@ const NavBar = () => {
     <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed='top'>
         <Container>
           <NavLink to="/" className={styles.NavLink}>
-            <Navbar.Brand>Buy & Sell cars LOGO</Navbar.Brand>
+          <img 
+              src={Logo} 
+              alt="Buy & Sell cars LOGO" 
+              className={styles.logo_img}
+              />
           </NavLink>
             
             <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
