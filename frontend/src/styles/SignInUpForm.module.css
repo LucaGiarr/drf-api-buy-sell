@@ -1,19 +1,5 @@
-/* .Row {
-    height: calc(100vh - 280px);
-    background-color: red;
-  } */
-  /* .Input {
-    background: #ffffff;
-    border: 1px solid #f0f1f9;
-    box-sizing: border-box;
-    border-radius: 2px;
-    color: #7177a1;
-    text-align: center;
-    padding: 10px;
-  } */
   
   .Header {
-    font-style: normal;
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
@@ -31,17 +17,5 @@
   }
   
   .Link span {
-    color: #ff9254;
+    color: #3366FF;
   }
-  
-  /* .Container {
-    padding: 30px 10px;
-  } */
-  
-  /* .SignInCol {
-    height: 320px;
-  } */
-  
-  /* .SignUpCol {
-    height: 375px;
-  } */

@@ -52,12 +52,6 @@ const SignInForm = () => {
     <Row>
       <Col className="mt-5 mx-auto py-2 p-md-2" lg={6} md={8}>
 
-				<Container className={`mt-3 ${appStyles.Content}`}>
-          <Link className={styles.Link} to="/signup">
-            Don't have an account? <span>Sign Up</span>
-          </Link>
-        </Container>
-
         <Container className={`${appStyles.Content} p-4 `}>
           <h1 className={styles.Header}>sign in</h1>
           
@@ -90,7 +84,7 @@ const SignInForm = () => {
               <Alert variant="warning" key={idx}>{message}</Alert>
             )}
 
-            <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
+            <Button className={`${btnStyles.Button} ${btnStyles.Wide}`} type="submit">
                 Sign In
             </Button>
             {errors.non_field_errors?.map((message,idx) => 
@@ -98,6 +92,12 @@ const SignInForm = () => {
             )}
 					</Form>
 
+        </Container>
+
+        <Container className={`mt-3 ${appStyles.Content}`}>
+          <Link className={styles.Link} to="/signup">
+            Don't have an account? <span>Sign Up</span>
+          </Link>
         </Container>
         
       </Col>
