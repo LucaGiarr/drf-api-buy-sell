@@ -97,6 +97,8 @@ class CarSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class MessageSerializer(serializers.ModelSerializer):
+    sender_username = serializers.ReadOnlyField(source='sender.username')
+    receiver_username = serializers.ReadOnlyField(source='receiver.username')
     class Meta:
         model = Message
-        fields = ('sender', 'receiver', 'car_id', 'content', 'timestamp')
+        fields = ('sender', 'sender_username', 'receiver','receiver_username', 'car_id', 'content', 'timestamp')
