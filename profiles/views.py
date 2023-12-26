@@ -9,7 +9,6 @@ class ProfileList(generics.ListAPIView):
     queryset = Profile.objects.annotate(
         cars_count=Count('owner__car', distinct=True),
     ).order_by('-created_on')
-    # queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
 
@@ -18,5 +17,4 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
     queryset = Profile.objects.annotate(
         cars_count=Count('owner__car', distinct=True),
     ).order_by('-created_on')
-    # queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
