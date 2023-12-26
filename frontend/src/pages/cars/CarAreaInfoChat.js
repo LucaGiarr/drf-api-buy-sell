@@ -20,7 +20,7 @@ const CarAreaInfoChat = (props) => {
         <strong className={styles.title_message_box}>Leave a message</strong>
 
         {!currentUser ? (
-          <p>
+          <p className={styles.text_not_signed_in}>
             You need to <Link to="/signin" className={styles.link_text}>Sign in</Link> to send a message.
           </p>
         ) : (

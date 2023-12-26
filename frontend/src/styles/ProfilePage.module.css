@@ -1,5 +1,8 @@
 .profile_image{
   height: 180px;
+  width: fit-content;
+  max-width: 270px;
+  object-fit: contain;
 }
 
 .owner_name{

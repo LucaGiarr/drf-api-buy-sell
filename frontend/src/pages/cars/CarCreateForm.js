@@ -6,8 +6,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-
-
 import styles from "../../styles/CarCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -163,12 +161,6 @@ function CarCreateForm() {
     if (car_photoInput.current.files.length) {
       formData.append("car_photo4", car_photo4Input.current.files[0]);
     }
-      
-    // formData.append("car_photo", car_photoInput.current.files[0]);
-    // formData.append("car_photo_1", car_photo1Input.current.files[0]);
-    // formData.append("car_photo_2", car_photo2Input.current.files[0]);
-    // formData.append("car_photo_3", car_photo3Input.current.files[0]);
-    // formData.append("car_photo_4", car_photo4Input.current.files[0]);
 
     try {
       const { data } = await axiosReq.post("/cars/", formData);
@@ -548,171 +540,171 @@ function CarCreateForm() {
 
   const image1Field = (
     <div className={appStyles.Content}>
-          <Form.Group className="text-center">
-              {car_photo_1 ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={car_photo_1} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car_photo1-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
+      <Form.Group className="text-center">
+        {car_photo_1 ? (
+          <>
+            <figure>
+              <Image className={appStyles.Image} src={car_photo_1} rounded />
+            </figure>
+            <div>
+              <Form.Label
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car_photo1-upload"
-                >
-                  Upload an image                  
-                </Form.Label>
-              )}
+                htmlFor="car_photo1-upload"
+              >
+                Change the image
+              </Form.Label>
+            </div>
+          </>
+        ) : (
+          <Form.Label
+          className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+            htmlFor="car_photo1-upload"
+          >
+            Upload an image                  
+          </Form.Label>
+        )}
 
-              <Form.File
-                id="car_photo1-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={car_photo1Input}
-              />
-            </Form.Group>
-            {errors?.car_photo_1?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
+        <Form.File
+          id="car_photo1-upload"
+          accept="image/*"
+          onChange={handleChangeImage}
+          ref={car_photo1Input}
+        />
+      </Form.Group>
+        {errors?.car_photo_1?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
     </div>
   );
 
   const image2Field = (
     <div className={appStyles.Content}>
       <Form.Group className="text-center">
-              {car_photo_2 ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={car_photo_2} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car_photo2-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
+        {car_photo_2 ? (
+          <>
+            <figure>
+              <Image className={appStyles.Image} src={car_photo_2} rounded />
+            </figure>
+            <div>
+              <Form.Label
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car_photo2-upload"
-                >
-                  Upload an image                  
-                </Form.Label>
-              )}
+                htmlFor="car_photo2-upload"
+              >
+                Change the image
+              </Form.Label>
+            </div>
+          </>
+        ) : (
+          <Form.Label
+          className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+            htmlFor="car_photo2-upload"
+          >
+            Upload an image                  
+          </Form.Label>
+        )}
 
-              <Form.File
-                id="car_photo2-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={car_photo2Input}
-              />
-            </Form.Group>
-            {errors?.car_photo_2?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
+        <Form.File
+          id="car_photo2-upload"
+          accept="image/*"
+          onChange={handleChangeImage}
+          ref={car_photo2Input}
+        />
+      </Form.Group>
+      {errors?.car_photo_2?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
     </div>
   );
 
   const image3Field = (
     <div className={appStyles.Content}>
       <Form.Group className="text-center">
-              {car_photo_3 ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={car_photo_3} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car_photo3-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
+        {car_photo_3 ? (
+          <>
+            <figure>
+              <Image className={appStyles.Image} src={car_photo_3} rounded />
+            </figure>
+            <div>
+              <Form.Label
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car_photo3-upload"
-                >
-                  Upload an image                  
-                </Form.Label>
-              )}
+                htmlFor="car_photo3-upload"
+              >
+                Change the image
+              </Form.Label>
+            </div>
+          </>
+        ) : (
+          <Form.Label
+          className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+            htmlFor="car_photo3-upload"
+          >
+            Upload an image                  
+          </Form.Label>
+        )}
 
-              <Form.File
-                id="car_photo3-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={car_photo3Input}
-              />
-            </Form.Group>
-            {errors?.car_photo_3?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
+        <Form.File
+          id="car_photo3-upload"
+          accept="image/*"
+          onChange={handleChangeImage}
+          ref={car_photo3Input}
+        />
+      </Form.Group>
+      {errors?.car_photo_3?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
     </div>
   );
 
   const image4Field = (
     <div className={appStyles.Content}>
       <Form.Group className="text-center">
-              {car_photo_4 ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={car_photo_4} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car_photo4-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
+        {car_photo_4 ? (
+          <>
+            <figure>
+              <Image className={appStyles.Image} src={car_photo_4} rounded />
+            </figure>
+            <div>
+              <Form.Label
                 className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car_photo4-upload"
-                >
-                  Upload an image                  
-                </Form.Label>
-              )}
+                htmlFor="car_photo4-upload"
+              >
+                Change the image
+              </Form.Label>
+            </div>
+          </>
+        ) : (
+          <Form.Label
+          className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+            htmlFor="car_photo4-upload"
+          >
+            Upload an image                  
+          </Form.Label>
+        )}
 
-              <Form.File
-                id="car_photo4-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={car_photo4Input}
-              />
-            </Form.Group>
-            {errors?.car_photo_4?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
+        <Form.File
+          id="car_photo4-upload"
+          accept="image/*"
+          onChange={handleChangeImage}
+          ref={car_photo4Input}
+        />
+      </Form.Group>
+      {errors?.car_photo_4?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
     </div>
   );
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Container className={styles.Container}>
+      <Container>
         <Row className="d-flex justify-content-center">
           <Col md={7} lg={5}>
             <div className={appStyles.Content}>
@@ -723,7 +715,7 @@ function CarCreateForm() {
       </Container>
       
 
-      <Container className={styles.Container}>
+      <Container>
       <Row className="d-flex justify-content-center"> 
           <Col md={7} lg={5}>
             {imageField}
@@ -751,183 +743,7 @@ function CarCreateForm() {
         </Row>
       </Container>
 
-      {/* from here */}
-
-      {/* <Row>
-        <Col md={5} lg={5}>
-          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
-          <Form.Group className="text-center">
-              {car_photo_1 ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={car_photo_1} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car_photo1-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car_photo1-upload"
-                >
-                  Upload an image                  
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="car_photo1-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={car_photo1Input}
-              />
-            </Form.Group>
-            {errors?.car_photo_1?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-          </Container>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col md={5} lg={5}>
-          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
-          <Form.Group className="text-center">
-              {car_photo_2 ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={car_photo_2} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car_photo2-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car_photo2-upload"
-                >
-                  Upload an image                  
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="car_photo2-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={car_photo2Input}
-              />
-            </Form.Group>
-            {errors?.car_photo_2?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-          </Container>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col md={5} lg={5}>
-          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
-          <Form.Group className="text-center">
-              {car_photo_3 ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={car_photo_3} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car_photo3-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car_photo3-upload"
-                >
-                  Upload an image                  
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="car_photo3-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={car_photo3Input}
-              />
-            </Form.Group>
-            {errors?.car_photo_3?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-          </Container>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col md={5} lg={5}>
-          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
-          <Form.Group className="text-center">
-              {car_photo_4 ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={car_photo_4} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="car_photo4-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="car_photo4-upload"
-                >
-                  Upload an image                  
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="car_photo4-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={car_photo4Input}
-              />
-            </Form.Group>
-            {errors?.car_photo_4?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-          </Container>
-        </Col>
-      </Row> */}
-
-      {/* To here */}
-      
-      <Container className={styles.Container}>
+      <Container className={styles.buttons_container}>
       <Row className="d-flex justify-content-center">
         <Col md={7} lg={5}>
           <div className={`${appStyles.Content} text-center`}>
@@ -945,23 +761,6 @@ function CarCreateForm() {
         
       </Row>
       </Container>
-      {/* <Row>
-        <Col md={5} lg={5}>
-          <Container className={`${appStyles.Content} text-center`}>
-            <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-              create
-            </Button>
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-              onClick={() => history.goBack()}
-            >
-              cancel
-            </Button>
-          </Container>
-        </Col>
-        
-      </Row> */}
-      
     </Form>
     
   );

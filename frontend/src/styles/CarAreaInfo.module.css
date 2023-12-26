@@ -7,6 +7,10 @@
   text-transform: capitalize;
 }
 
+.text_not_signed_in{
+  margin: 5px 0 20px 10px;
+}
+
 i {
   text-decoration: none;
   font-size: 20px;

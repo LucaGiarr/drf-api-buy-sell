@@ -1,6 +1,3 @@
-/* .Container{
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
+.buttons_container{
+  margin-bottom: 10px;
+}

@@ -3,44 +3,30 @@ import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-
 import Asset from "../../components/Asset";
-
 import styles from "../../styles/ProfilePage.module.css";
-import appStyles from "../../App.module.css";
-// import btnStyles from "../../styles/Button.module.css";
 
-
-// import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import {
   useProfileData,
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
-import { Image } from "react-bootstrap";
-
-import Car from "../cars/Car";
-
-import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import InfiniteScroll from "react-infinite-scroll-component";
 
-import { ProfileEditDropdown } from "../../components/MoreDropdown";
-import { EditDeleteButtons, ProfileEditButton } from "../../components/MoreButtons";
-
+import { Image } from "react-bootstrap";
+import CarInfoCarsPage from "../cars/CarInfoCarsPage";
+import { ProfileEditButton } from "../../components/MoreButtons";
 
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profileCars, setProfileCars] = useState({ results: [] });
-
-  // const currentUser = useCurrentUser();
   const { id } = useParams();
   const setProfileData = useSetProfileData();
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
-  // const is_owner = currentUser?.username === profile?.owner;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,10 +54,10 @@ function ProfilePage() {
       <Row noGutters className="text-center">
         <Col lg={3} className="text-lg-left">
           <Image
-            className={styles.profile_image}
-            src={profile?.image}
-            // height={180}
+          className={styles.profile_image}
+          src={profile?.image}
           />
+          
         </Col>
         <Col lg={7}>
           <h3 className={styles.owner_name}>{profile?.owner}</h3>
@@ -106,7 +92,7 @@ function ProfilePage() {
           {profileCars.results.length ? (
             <InfiniteScroll
               children={profileCars.results.map((car) => (
-                <Car key={car.id} {...car} setCars={setProfileCars} />
+                <CarInfoCarsPage key={car.id} {...car} setCars={setProfileCars} />
               ))}
               dataLength={profileCars.results.length}
               loader={<Asset spinner />}

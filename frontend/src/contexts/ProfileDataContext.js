@@ -11,7 +11,6 @@ export const useSetProfileData = () => useContext(SetProfileDataContext);
 export const ProfileDataProvider = ({ children }) => {
   const [profileData, setProfileData] = useState({
     pageProfile: { results: [] },
-    // row below modified
     recentProfiles: { results: [] },
   });
 
@@ -26,7 +25,6 @@ export const ProfileDataProvider = ({ children }) => {
         
         setProfileData((prevState) => ({
           ...prevState,
-          // row below modified
           recentProfiles: data,
         }));
       } catch (err) {

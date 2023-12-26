@@ -1,16 +1,11 @@
 .NavBar{
-    /* border: 1px solid black; */
     margin: 0;
     padding: 0;
-
     background-color: #4081FA;
-    /* background-color: #EEEEEE; */
 }
 
 .NavLink{
-    /* color: rgba(0,0,0,.5); */
     color: whitesmoke;
-    /* display: block; */
     display: flex;
     padding: 10px;
 }
@@ -20,7 +15,6 @@ a {
 } 
 
 .Active{
-    /* color: black; */
     color: #F79031;
     font-weight: bold;
 }

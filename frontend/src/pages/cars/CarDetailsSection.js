@@ -4,7 +4,6 @@ import { Container, Row, Table, Col } from "react-bootstrap";
 
 const Car = (props) => {
   const {
-    // id,
     make,
     model,
     year,

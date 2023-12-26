@@ -1,20 +1,7 @@
 import React from "react";
-import Dropdown from "react-bootstrap/Dropdown";
-import styles from "../styles/Button.module.css";
 import { useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
-
-// const ThreeDots = React.forwardRef(({ onClick }, ref) => (
-//   <i
-//     className="fas fa-ellipsis-v"
-//     ref={ref}
-//     onClick={(e) => {
-//       e.preventDefault();
-//       onClick(e);
-//     }}
-//   />
-// ));
 
 export const EditDeleteButtons = ({ handleEdit, handleDelete }) => {
   return (

@@ -16,3 +16,8 @@
     cursor: default;
     color: #cfced3;
   }
+
+  .customCol{
+    margin-left: 15px;
+    margin-right: 15px;
+  }

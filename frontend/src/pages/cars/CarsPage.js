@@ -5,8 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import Car from "./Car";
-import CarPage from "./CarPage";
+import CarInfoCarsPage from "./CarInfoCarsPage";
 import Asset from "../../components/Asset";
 
 import appStyles from "../../App.module.css";
@@ -18,7 +17,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
 
-function CarsPage({ message, filter = "" }) {
+function CarsPage({ filter = "" }) {
   
   const [cars, setCars] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -49,7 +48,7 @@ function CarsPage({ message, filter = "" }) {
 
   return (
     <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2">
+      <Col className={`py-2 p-0 p-lg-2 ${styles.customCol}`}>
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
@@ -69,7 +68,8 @@ function CarsPage({ message, filter = "" }) {
             {cars.results.length ? (
               <InfiniteScroll
                 children={cars.results.map((car) => (
-                  <Car key={car.id} {...car} setCars={setCars} />
+                  <CarInfoCarsPage key={car.id} {...car} setCars={setCars} />
+                  // <Car key={car.id} {...car} setCars={setCars} />
                   
                 ))}
                 dataLength={cars.results.length}
@@ -92,50 +92,6 @@ function CarsPage({ message, filter = "" }) {
       
     </Row>
   );
-
-  // return (
-  //   <Container fluid className={appStyles.Content}>
-  //     <Row>
-  //       <Col xs={12} md={3} className="py-2">
-  //         <i className={`fas fa-search ${styles.SearchIcon}`} />
-  //         <Form
-  //           className={styles.SearchBar}
-  //           onSubmit={(event) => event.preventDefault()}
-  //         >
-  //           <Form.Control
-  //             value={query}
-  //             onChange={(event) => setQuery(event.target.value)}
-  //             type="text"
-  //             placeholder="Search cars"
-  //           />
-  //         </Form>
-  //       </Col>
-
-  //       <Col xs={12} md={9} className="py-2">
-  //         {hasLoaded ? (
-  //           <>
-  //             {cars.results.length ? (
-  //               <InfiniteScroll
-  //                 children={cars.results.map((car) => (
-  //                   <Car key={car.id} {...car} setCars={setCars} />
-  //                 ))}
-  //                 dataLength={cars.results.length}
-  //                 loader={<Asset spinner />}
-  //                 hasMore={!!cars.next}
-  //                 next={() => fetchMoreData(cars, setCars)}
-  //               />
-  //             ) : (
-  //               <p>No results found. Please adjust the search keyword and try again.</p>
-  //             )}
-  //           </>
-  //         ) : (
-  //           <Asset spinner />
-  //         )}
-  //       </Col>
-  //     </Row>
-  //   </Container>
-  // );
-
 }
 
 export default CarsPage;

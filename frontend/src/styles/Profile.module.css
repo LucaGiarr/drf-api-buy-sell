@@ -1,8 +1,10 @@
-.WordBreak {
+/* .WordBreak {
     word-break: break-all;
   }
 
 .image{
   height: 50px;
   width: auto;
-}
+  max-width: 320px;
+  background-color: red;
+} */

@@ -1,13 +1,13 @@
 import React from "react";
-import {Navbar, Container, Nav} from "react-bootstrap"
-import styles from "../styles/NavBar.module.css"
-import { NavLink } from 'react-router-dom'
+import {Navbar, Container, Nav} from "react-bootstrap";
+import styles from "../styles/NavBar.module.css";
+import { NavLink } from 'react-router-dom';
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
-import Avatar from './Avatar'
+import Avatar from './Avatar';
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
-import Logo from "../images/Logo.png"
+import Logo from "../images/Logo.png";
 
 const NavBar = () => {
 

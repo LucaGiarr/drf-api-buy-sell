@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
-
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";
+
 
 const SignUpForm = () => {
   useRedirect('loggedIn')
@@ -17,9 +16,7 @@ const SignUpForm = () => {
     password2: ''
   })
   const {username, password1, password2} = signUpData;
-
   const [errors, setErrors] = useState({});
-
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -46,8 +43,6 @@ const SignUpForm = () => {
   return (
     <Row>
       <Col className="mt-5 mx-auto py-2 p-md-2" lg={6} md={8}>
-
-				
 
         <Container className={`${appStyles.Content} p-4 `}>
           <h1 className={styles.Header}>sign up</h1>
@@ -102,7 +97,6 @@ const SignUpForm = () => {
               <Alert variant="warning" key={idx} className="mt-3">{message}</Alert>
             )}
 					</Form>
-
         </Container>
 
         <Container className={`mt-3 ${appStyles.Content}`}>
@@ -110,9 +104,7 @@ const SignUpForm = () => {
             Already have an account? <span>Sign in</span>
           </Link>
         </Container>
-        
-      </Col>
-      
+      </Col> 
     </Row>
   );
 };
