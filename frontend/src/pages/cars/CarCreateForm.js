@@ -931,14 +931,14 @@ function CarCreateForm() {
       <Row className="d-flex justify-content-center">
         <Col md={7} lg={5}>
           <div className={`${appStyles.Content} text-center`}>
-          <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-              Create
-            </Button>
             <Button
                 className={`${btnStyles.Button} ${btnStyles.Blue}`}
                 onClick={() => history.goBack()}
               >
                 Cancel
+            </Button>
+            <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+              Create
             </Button>
           </div>
         </Col>
