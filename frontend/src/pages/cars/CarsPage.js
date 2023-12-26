@@ -68,9 +68,7 @@ function CarsPage({ filter = "" }) {
             {cars.results.length ? (
               <InfiniteScroll
                 children={cars.results.map((car) => (
-                  <CarInfoCarsPage key={car.id} {...car} setCars={setCars} />
-                  // <Car key={car.id} {...car} setCars={setCars} />
-                  
+                  <CarInfoCarsPage key={car.id} {...car} setCars={setCars} />                  
                 ))}
                 dataLength={cars.results.length}
                 loader={<Asset spinner />}

@@ -52,7 +52,7 @@ const CarAreaInfo = (props) => {
         </h3>
       </div>
       <p>
-        <i class="pl-0 fa-solid fa-location-dot"></i>
+        <i className="pl-0 fa-solid fa-location-dot"></i>
         <span>{city}</span>
       </p>
       <p>
