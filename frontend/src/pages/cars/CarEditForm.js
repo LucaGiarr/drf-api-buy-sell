@@ -5,17 +5,14 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-
-
+import Image from "react-bootstrap/Image";
+import Alert from "react-bootstrap/Alert";
 
 import styles from "../../styles/CarCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Alert from "react-bootstrap/Alert";
-import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-
 import { useRedirect } from "../../hooks/useRedirect";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -129,7 +126,6 @@ function CarEditForm() {
           description
          }) : history.push("/");
       } catch (err) {
-        console.log(err);
       }
     };
 
@@ -224,7 +220,6 @@ function CarEditForm() {
       await axiosReq.put(`/cars/${id}/`, formData);
       history.push(`/cars/${id}`);
     } catch (err) {
-      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

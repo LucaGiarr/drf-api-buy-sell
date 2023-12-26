@@ -32,7 +32,6 @@ function CarsPage({ filter = "" }) {
         setCars(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
       }
     };
 

@@ -10,21 +10,20 @@ export const ChatComponent = ({ sender, receiver, carId }) => {
   const [loading, setLoading] = useState(true);
 
   const fetchMessages = useCallback(async () => {
-      try {
-        setLoading(true);
+    try {
+      setLoading(true);
 
-        if (carId) {
-          const response = await axios.get(`/api/messages/?car_id=${carId}`);
-          setMessages(response.data.results);
-        }
-
-      } catch (error) {
-        console.error('Error fetching messages:', error);
-        setMessages([]);
-      } finally {
-        setLoading(false);
+      if (carId) {
+        const response = await axios.get(`/api/messages/?car_id=${carId}`);
+        setMessages(response.data.results);
       }
-      
+
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+      setMessages([]);
+    } finally {
+      setLoading(false);
+    }
   }, [sender, receiver, carId]);
 
   useEffect(() => {

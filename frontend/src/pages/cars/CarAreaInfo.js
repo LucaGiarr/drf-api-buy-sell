@@ -1,6 +1,6 @@
 import React from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Media } from "react-bootstrap";
+import Media from "react-bootstrap/Media";
 import { Link } from 'react-router-dom';
 import Avatar from "../../components/Avatar";
 
@@ -38,7 +38,6 @@ const CarAreaInfo = (props) => {
         await axiosRes.delete(`/cars/${id}/`);
         history.goBack();
       } catch (err) {
-        console.log(err);
       }
     }
   };

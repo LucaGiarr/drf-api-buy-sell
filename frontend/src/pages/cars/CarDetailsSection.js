@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "../../styles/CarDetailsSection.module.css";
-import { Container, Row, Table, Col } from "react-bootstrap";
+import Table from "react-bootstrap/Table";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 const Car = (props) => {
   const {

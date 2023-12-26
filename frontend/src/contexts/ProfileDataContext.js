@@ -28,7 +28,6 @@ export const ProfileDataProvider = ({ children }) => {
           recentProfiles: data,
         }));
       } catch (err) {
-        console.log(err);
       }
     };
 

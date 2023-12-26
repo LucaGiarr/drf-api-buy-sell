@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../styles/Car.module.css";
-import { Row, Col } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import { Link } from 'react-router-dom';
 
 const CarInfoCarsPage = (props) => {

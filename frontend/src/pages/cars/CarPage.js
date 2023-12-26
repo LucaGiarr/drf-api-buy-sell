@@ -24,7 +24,6 @@ function CarPage() {
         ]);
         setCar({ results: [car] });
       } catch (err) {
-        console.log(err);
       }
     };
 

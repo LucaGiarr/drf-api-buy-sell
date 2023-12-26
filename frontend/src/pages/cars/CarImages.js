@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/CarImages.module.css";
-import { Carousel } from "react-bootstrap";
+import Carousel from "react-bootstrap/Carousel";
 
 const CarImages = (props) => {
   const {
