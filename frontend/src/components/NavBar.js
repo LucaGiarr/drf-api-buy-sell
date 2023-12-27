@@ -80,7 +80,7 @@ const NavBar = () => {
               />
           </NavLink>
             
-            <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
+            <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto text-center">
                     <NavLink 
@@ -93,10 +93,8 @@ const NavBar = () => {
 
                     {currentUser ? loggedInIcons : loggedOutIcons}
                 </Nav>
-            </Navbar.Collapse>
-            
-        </Container>
-        
+            </Navbar.Collapse> 
+        </Container>  
     </Navbar>
 
   )

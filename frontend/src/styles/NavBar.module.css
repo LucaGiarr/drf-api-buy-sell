@@ -27,3 +27,7 @@ a {
 .NavLink:hover{
     color: #F79031;
 }
+
+.toggler{
+    margin-right: 50px;
+}

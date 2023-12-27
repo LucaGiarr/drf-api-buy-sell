@@ -19,12 +19,12 @@ import { setTokenTimestamp } from "../../utils/utils";
 const SignInForm = () => {
 
   const setCurrentUser = useSetCurrentUser();
-  useRedirect('loggedIn')
+  useRedirect('loggedIn');
 
   const [signInData, setSignInData] = useState({
     username: '',
     password: ''
-  })
+  });
   const {username, password} = signInData;
 
   const [errors, setErrors] = useState({});
@@ -35,8 +35,8 @@ const SignInForm = () => {
     setSignInData({
       ...signInData,
       [event.target.name]: event.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -46,13 +46,13 @@ const SignInForm = () => {
       setTokenTimestamp(data);
       history.goBack();
     } catch (err){
-      setErrors(err.response?.data)
+      setErrors(err.response?.data);
     }
     setSignInData({
       ...signInData,
       [event.target.name]: event.target.value,
-    })
-  }
+    });
+  };
 
   return (
     <Row>

@@ -17,7 +17,7 @@ import { useRedirect } from "../../hooks/useRedirect";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 function CarEditForm() {
-  useRedirect('loggedOut')
+  useRedirect('loggedOut');
   const [errors, setErrors] = useState({});
 
   const [advertData, setAdvertData] = useState({

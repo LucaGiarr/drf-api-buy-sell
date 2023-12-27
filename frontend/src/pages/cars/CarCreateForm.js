@@ -16,7 +16,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function CarCreateForm() {
-  useRedirect('loggedOut')
+  useRedirect('loggedOut');
   const [errors, setErrors] = useState({});
 
   const [advertData, setAdvertData] = useState({
