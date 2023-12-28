@@ -42,7 +42,7 @@ View the live project [here](https://drf-api-buy-sell-f7b7b7adb241.herokuapp.com
         - [Mobile](#mobile)
   - [Agile Methodology](#agile-methodology)
   - [Data Model](#data-model)
-    - [Project Overview:](#project-overview:)
+    - [Project Overview](#project-overview)
     - [Car Model](#car-model)
     - [Message Model](#message-model)
     - [UserProfile Model](#userprofile-model)
@@ -219,10 +219,10 @@ Link to project board [here](https://github.com/users/LucaGiarr/projects/3)
 
 ## Data Model
 
-### Project Overview:
+### Project Overview
 The project adheres to Object-Oriented Programming (OOP) principles and uses the Django framework for web development. The user authentication system is implemented using Django AllAuth, providing secure and customizable authentication features.
 
-### Car Model:
+### Car Model
 The custom `Car` model is designed to enable users to create and manage car advertisements. It includes several attributes, each representing a database field. Key attributes include:
 - `car_title`: Title of the car advertisement.
 - `make`, `model`, `year`: Details about the car's make, model, and year of manufacture.
@@ -235,14 +235,14 @@ The custom `Car` model is designed to enable users to create and manage car adve
 - `created_on`: Timestamp indicating when the car listing was created.
 - `owner`: Foreign key referencing the `User` model, establishing a relationship between the car advertisement and its owner.
 
-### Message Model:
+### Message Model
 The `Message` model facilitates communication between users regarding specific car listings. Key attributes include:
 - `sender`, `receiver`: Foreign keys linking to the `User` model, representing the sender and receiver of the message.
 - `content`: The textual content of the message.
 - `timestamp`: Timestamp indicating when the message was sent.
 - `car_id`: Foreign key linking to the `Car` model, associating the message with a specific car listing.
 
-### UserProfile Model:
+### UserProfile Model
 The `UserProfile` model is introduced to store comprehensive user information. It has a OneToOne relationship with the `User` model (provided by AllAuth), ensuring a one-to-one correspondence between users and their profiles. At the current stage, the `UserProfile` model contains:
 - `owner`: OneToOneField referencing the `User` model, establishing a direct link between the user and their profile.
 - `created_on`, `updated_on`: Timestamps indicating when the profile was created and last updated.
@@ -289,56 +289,56 @@ If incorrect data is added to a form, the form won't submit and a warning will a
 
 The database url and secret key are stored in the env.py. This was set up before the first push to Github.
 
-Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this app.
-
 ## Features
 
-The app starts from the "All Recipes" page which is the home page. From this page, the user can navigate to all the other pages present within this app. On top of each page is the logo. When it is clicked, it will open the home page.
-In the navigation bar, the user is able to filter the recipes depending on the categories (All Recipes, Starters, Main Courses, Desserts and Other). He/she can also Sign up or Sign In.
-The recipes are shown as cards with essential info provided on the pages All Recipes, Starters, Main Courses, Desserts and Other (Personal Recipe and Favourite Recipes when the user is signed in). More detailed info is provided on the recipe details page (one for each recipe) when the recipe's title is clicked on the recipe's card.
-A user can Sign up and Sign in. Once he/she signs in, a My Profile page will be created with useful links to change password, create a recipe, to the personal recipe page (which is the page where the recipe created by the user will be stored) and to the favourite recipes page where the saved/bookmarked recipes will be stored.
-While a user is signed in, he/she will be able to like, save/bookmark and comment on a recipe (features that are not allowed for a non-signed-in user).
-A signed-in user will also be able to create, edit and delete his/her own recipes.
-Signed-in users cannot edit and/or delete other's user recipes. If he/she tries to do it, a warning message is displayed.
+The application begins with the Adverts page, serving as the home page, from which users can access all other app pages. Each page features a logo and navigation bar at the top. Clicking the logo returns the user to the home page.
 
-![All Recipes](docs/features_images/all_recipes.jpeg)
+The navigation bar allows non-logged-in users to Sign up or Sign In. Once logged in, users can navigate to the profile page and add an advert by clicking the "Sell your car" link.
 
-![Starters](/docs/features_images/starters.png)
+Adverts are displayed as cards, showing the first image on the left and car details on the right for large screens. On smaller screens, the cards show the first image at the top and car details at the bottom.
 
-![Main Courses](/docs/features_images/main.png)
+Clicking on a car's title in the advert's card provides more detailed information on the dedicated car's page.
 
-![Desserts](/docs/features_images/desserts.png)
+Users have the option to Sign up and Sign in. Upon signing in, a Profile page is created, offering useful links such as "Edit image and Email," "Change Username," and "Change Password."
 
-![Other](/docs/features_images/other.png)
+While signed in, users can send messages to the owners of adverts on a car's page, a feature unavailable to non-signed-in users. Signed-in users can also create, edit, and delete their own adverts but cannot modify or delete adverts created by others.
 
-![Sign Up](/docs/features_images/signup.png)
+![Home page - Logged in](docs/features_images/home_logged%20in.png)
 
-![Sign In](/docs/features_images/signin.png)
+![Home page - Logged out](docs/features_images/home_logged%20out.png)
 
-![Sign Out](/docs/features_images/signout.png)
+![Profile page](docs/features_images/profile%20page.png)
 
-![Dropdown menu](/docs/features_images/dropdown.jpeg)
+![Edit image & Email](docs/features_images/edit%20profile.png)
 
-![My Profile](/docs/features_images/my_profile.png)
+![Change Username](docs/features_images/change_username.png)
 
-![Change password](/docs/features_images/change_pass.png)
+![Change Password](docs/features_images/edit%20password.png)
 
-![Create a Recipe](/docs/features_images/new_recipe.png)
+![Car's details page](docs/features_images/cars_detail_page.png)
 
-![Edit a Recipe](/docs/features_images/edit_recipe.png)
+![Sign In page](docs/features_images/sign%20in.png)
 
-![Delete a Recipe](/docs/features_images/delete_recipe.png)
+![Sign Up page](docs/features_images/sign%20up.png)
 
-![Personal Recipes](/docs/features_images/personal_recipes.jpeg)
+![Sign Out](docs/features_images/signout.png)
 
-![Favourite Recipes](/docs/features_images/favourites.png)
+![Search box](docs/features_images/search.png)
+
+![Create advert page](docs/features_images/create.png)
+
+![Edit advert page](docs/features_images/edit.png)
+
+![Delete an advert](docs/features_images/del%20advert.png)
+
+![Message box](docs/features_images/message%20box.png)
 
 ### Future Features
 
 Future features will include:
 
-- The possibility for the user to add a profile picture and write a description of himself/herself.
-- A new page where the user can access to his/her liked recipes.
+- A new page for each registered user where the messages are collected so they are shown as DM and not in the car's details page.
+- The possibility to sell not just cars but other items like motorbikes and parts, all regarding the motoring world.
 
 ## Deployment - Heroku
 
@@ -361,7 +361,7 @@ To deploy this page to Heroku from its GitHub repository, the below steps were f
 
 - In the GitPod workspace, create an env.py file in the main directory.
 - Add the DATABASE_URL value and the chosen SECRET_KEY value to the env.py file.
-- Update the settings.py file to import the env.py file and add the SECRETKEY and DATABASE_URL file paths.
+- Update the settings.py file to import the env.py file and add the SECRET_KEY and DATABASE_URL file paths.
 - Comment out the default database configuration.
 - Save files and make migrations.
 - Add Cloudinary URL to env.py
@@ -381,10 +381,12 @@ To deploy this page to Heroku from its GitHub repository, the below steps were f
 
 Add the following Config Vars in Heroku:
 
-- SECRET_KEY value
+- ALLOWED_HOST
+- CLIENT_ORIGIN
 - CLOUDINARY_URL
-- PORT = 8000
+- DATABASE_URL
 - DISABLE_COLLECTSTATIC = 1
+- SECRET_KEY value
 
 ### Deploy
 
@@ -395,7 +397,7 @@ Add the following Config Vars in Heroku:
 
 ## Forking this repository
 
-- Locate the repository at this link [Five-star Recipes](https://github.com/LucaGiarr/five-star-recipes).
+- Locate the repository at this link [Buy & Sell](https://github.com/LucaGiarr/drf-api-buy-sell).
 - At the top of the repository, on the right side of the page, select "Fork" from the buttons available.
 - A copy of the repository is now created.
 
@@ -403,7 +405,7 @@ Add the following Config Vars in Heroku:
 
 To clone this repository follow the below steps:
 
-1. Locate the repository at this link [Five-star Recipes](https://github.com/LucaGiarr/five-star-recipes).
+1. Locate the repository at this link [Buy & Sell](https://github.com/LucaGiarr/drf-api-buy-sell).
 2. Under **'Code'**, see the different cloning options, HTTPS, SSH, and GitHub CLI. Click the prefered cloning option, and then copy the link provided.
 3. Open **Terminal**.
 4. In Terminal, change the current working directory to the desired location of the cloned directory.
@@ -423,8 +425,7 @@ To clone this repository follow the below steps:
 - [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): authentication library used to create the user accounts
 - [PostgreSQL](https://www.postgresql.org/) was used as the database for this project.
 - [Heroku](https://dashboard.heroku.com/login) - was used as the cloud based platform to deploy the site on.
-- [Responsinator](http://www.responsinator.com/) - Used to verify responsiveness of website on different devices.
-- [Bluebeam](https://www.bluebeam.com/) - Used to generate Wireframe images and to create the database schema design.
+- [PowerPoint](https://www.microsoft.com/it-it/microsoft-365/powerpoint) - Used to generate Wireframe images.
 - [Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) - Used during the app development, including testing responsiveness and performance.
 - [Font Awesome](https://fontawesome.com/) - Used for the icons.
 - [GitHub](https://github.com/) - Used for version control and agile tool.
@@ -433,8 +434,6 @@ To clone this repository follow the below steps:
 - [PEP8 Online](http://pep8online.com/) - used to validate all the Python code.
 - [Jshint](https://jshint.com/) - used to validate javascript code.
 - [Coolors](https://coolors.co/) - Used to create the colour palette.
-- [Summernote](https://summernote.org/): A WYSIWYG editor to allow users to edit their posts.
-- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) used to manage Django Forms.
 - [Cloudinary](https://cloudinary.com/): the image hosting service used to upload images.
 - [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/): CSS Framework.
 
@@ -444,20 +443,14 @@ To clone this repository follow the below steps:
 - [Django Docs](https://docs.djangoproject.com/en/4.0/)
 - [Bootstrap 4.6 Docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
 - [Stack Overflow](https://stackoverflow.com/)
-- [BBC Goodfood](https://www.bbcgoodfood.com/): Some recipes.
-- [Tesco Real Food](https://realfood.tesco.com/): Some recipes.
-- [Giallo Zafferano](https://www.giallozafferano.it/): Some recipes.
-- [Creme de la Crumb](https://www.lecremedelacrumb.com/): Some recipes.
-- [Hairbikers](https://www.hairybikers.com/): Some recipes.
-- [AutoSlugField](https://django-extensions.readthedocs.io/en/latest/field_extensions.html)
-- [Create a user bookmark](https://www.youtube.com/watch?v=H4QPHLmsZMU)
-- [Create a user profile page](https://www.youtube.com/watch?v=zb4fIvtn4tY)
-- [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog): I reused some of the code present in these lessons.
-- Valentina Rainato for the logo.
+- [BBC Goodfood](https://www.clipartmax.com/): For the base logo image.
+- [Code Institute - Moments Walkthrough Project](https://github.com/Code-Institute-Solutions/moments): I used some of the code present in these lessons.
+- Fabrizio Giarrusso for the logo.
 
 ## Acknowledgments
 
-I would like to acknowledge the following people who helped me along the way in completing my fourth milestone project:
+I would like to acknowledge the following people who helped me along the way in completing my fifth milestone project:
 
 Antonio Rodriguez, my Code Institute Mentor, who gave me suggestions and tips on how to approach this project.
-Code Institute, for the lessons (especially the videos related to this project) that were very useful and needful to complete this milestone project.
+Code Institute, for the lessons (especially the videos related to this project) that were very useful and needful to complete this milestone project on time.
+Code Institute tutors that helped me solving some issues on the way.

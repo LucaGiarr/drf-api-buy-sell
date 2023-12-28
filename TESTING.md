@@ -8,7 +8,7 @@
   - [Authentication - Logged in Status](#authentication---logged-in-status)
   - [Authentication - Refreshing access tokens](#authentication---refreshing-access-tokens)
   - [Navigation - Conditional rendering](#navigation---conditional-rendering)
-  - [Advert page](#advert-page)
+  - [Adverts page](#adverts-page)
   - [Search for an advert](#search-for-an-advert)
   - [View most recent adverts](#view-most-recent-adverts)
   - [View details of an advert](#view-details-of-an-advert)
@@ -25,7 +25,6 @@
   - [Delete an advert](#delete-an-advert)
 - [Validator Testing](#validator-testing)
   - [HTML](#html)
-    - [Note 1](#note-1)
   - [CSS](#css)
   - [Javascript](#javascript)
   - [Python](#python)
@@ -37,11 +36,9 @@
 - [Manual Testing](#manual-testing)
 - [Bugs](#bugs)
   - [Fixed Bugs](#fixed-bugs)
-    - [Footer not staying at the bottom of the page](#Footer-not-staying-at-the-bottom-of-the-page)
-    - [Number of comments not correct in the recipe detail page](#Number-of-comments-not-correct-in-the-recipe-detail-page)
-    - [Error 404 when creating a recipe](#Error-404-when-creating-a-recipe)
-    - [Error 500 when deleting a recipe](#Error-500-when-deleting-a-recipe)
-    - [Error 500 when a new user Signs up and try to enter in the Profile page](#Error-500-when-a-new-user-Signs-up-and-try-to-enter-in-the-Profile-page)
+    - [Error "Cannot read properties of null" when creating an advert](#error-cannot-read-properties-of-null-when-creating-an-advert)
+    - [Error "400 (Bad Request) when sending the form for editing the profile image or email](#error-400-bad-request-when-sending-the-form-for-editing-the-profile-image-or-email)
+
   - [Unfixed bugs:](#unfixed-bugs)
 
 ## User Story Testing
@@ -94,7 +91,7 @@ _As a logged out user I can see sign-in and sign-up options so that I can sign i
 
 - When a user is logged out the "Sign In" and "Sign Up" are shown in the navbar that is shown in every page.
 
-#### Advert page
+#### Adverts page
 
 _As a user I can view the adverts page so that I can see a list of cars for sale._
 
@@ -243,45 +240,25 @@ The main pages of the deployed site were validated using the Lighthouse validati
 
 #### Desktop
 
-| Page                  | Performance | Accessibility | Best Practice | SEO |
-| --------------------- | ----------- | ------------- | ------------- | --- |
-| index.html            | 92          | 96            | 92            | 90  |
-| starters.html         | 91          | 96            | 92            | 90  |
-| maincourses.html      | 91          | 96            | 92            | 90  |
-| desserts.html         | 92          | 96            | 92            | 90  |
-| other.html            | 92          | 96            | 92            | 90  |
-| delete_recipe.html    | 92          | 96            | 92            | 90  |
-| edit_recipe.html      | 83          | 96            | 92            | 90  |
-| favourites.html       | 92          | 96            | 92            | 90  |
-| personal_recipes.html | 92          | 93            | 92            | 90  |
-| recipe_details.html   | 80          | 96            | 92            | 90  |
-| recipe_form.html      | 82          | 96            | 92            | 90  |
-| login.html            | 91          | 97            | 92            | 90  |
-| logout.html           | 93          | 98            | 92            | 90  |
-| password_change.html  | 93          | 98            | 99            | 90  |
-| signup.html           | 89          | 97            | 92            | 90  |
-| user_profile.html     | 92          | 97            | 92            | 90  |
+| Page               | Performance | Accessibility | Best Practice | SEO |
+| ------------------ | ----------- | ------------- | ------------- | --- |
+| Home page          | 84          | 95            | 95            | 100 |
+| Sign In page       | 93          | 88            | 91            | 100 |
+| Sign Up page       | 91          | 88            | 92            | 100 |
+| Advert page        | 85          | 96            | 95            | 100 |
+| Profile page       | 85          | 86            | 95            | 91  |
+| Sell your car page | 93          | 86            | 95            | 100 |
 
 #### Mobile
 
-| Page                  | Performance | Accessibility | Best Practice | SEO |
-| --------------------- | ----------- | ------------- | ------------- | --- |
-| index.html            | 87          | 96            | 92            | 90  |
-| starters.html         | 86          | 96            | 92            | 90  |
-| maincourses.html      | 87          | 96            | 92            | 90  |
-| desserts.html         | 85          | 96            | 92            | 90  |
-| other.html            | 85          | 93            | 92            | 90  |
-| delete_recipe.html    | 85          | 96            | 92            | 90  |
-| edit_recipe.html      | 79          | 93            | 85            | 92  |
-| favourites.html       | 80          | 92            | 85            | 92  |
-| personal_recipes.html | 83          | 93            | 85            | 92  |
-| recipe_details.html   | 78          | 92            | 83            | 92  |
-| recipe_form.html      | 75          | 95            | 83            | 92  |
-| login.html            | 84          | 97            | 83            | 92  |
-| logout.html           | 82          | 97            | 83            | 92  |
-| password_change.html  | 80          | 98            | 92            | 92  |
-| signup.html           | 81          | 97            | 83            | 92  |
-| user_profile.html     | 80          | 97            | 83            | 90  |
+| Page               | Performance | Accessibility | Best Practice | SEO |
+| ------------------ | ----------- | ------------- | ------------- | --- |
+| Home page          | 78          | 95            | 95            | 100 |
+| Sign In page       | 90          | 87            | 91            | 100 |
+| Sign Up page       | 93          | 87            | 94            | 100 |
+| Advert page        | 84          | 92            | 96            | 100 |
+| Profile page       | 85          | 89            | 94            | 96  |
+| Sell your car page | 92          | 90            | 91            | 100 |
 
 ## Browser Testing
 
@@ -295,75 +272,49 @@ The main pages of the deployed site were validated using the Lighthouse validati
 
 Manual testing were performed for both desktop and mobile. Because of time restraints, the below table is shown just some of the tests carried out and the results.
 
-| Element               | Action     | Expected Result                                                                                                                             | Pass/Fail |
-| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| Logo area             | Click      | Redirect to home                                                                                                                            | Pass      |
-| All Recipes Link      | Click      | Open All Recipes page                                                                                                                       | Pass      |
-| Starters Link         | Click      | Open Starters page                                                                                                                          | Pass      |
-| Main Courses Link     | Click      | Open Main Courses page                                                                                                                      | Pass      |
-| Desserts Link         | Click      | Open Desserts page                                                                                                                          | Pass      |
-| Other Link            | Click      | Open Other page                                                                                                                             | Pass      |
-| Title of a recipe     | Click      | Open the details of that particular recipe                                                                                                  | Pass      |
-| Sign Up Link          | Click      | Open Sign up page                                                                                                                           | Pass      |
-| Sign Up Link          | Display    | Not visible if the user is logged in                                                                                                        | Pass      |
-| Log In Link           | Click      | Open Login page                                                                                                                             | Pass      |
-| Log In Link           | Display    | Not visible if the user is logged in                                                                                                        | Pass      |
-| user Dropdown         | Display    | Present just when the user is logged in                                                                                                     | Pass      |
-| user Dropdown         | Click      | Open user dropdown                                                                                                                          | Pass      |
-| My Profile Link       | Display    | Only visible if the user is logged in                                                                                                       | Pass      |
-| My Profile Link       | Click      | Open My Profile page                                                                                                                        | Pass      |
-| Change Password Link  | Display    | Only visible if the user is logged in                                                                                                       | Pass      |
-| Change Password Link  | Click      | Open Change Password page                                                                                                                   | Pass      |
-| New Recipe Link       | Display    | Only visible if the user is logged in                                                                                                       | Pass      |
-| New Recipe Link       | Click      | Open Add a Recipe page                                                                                                                      | Pass      |
-| Likes icon            | Click      | If user is not logged in none happens                                                                                                       | Pass      |
-| Likes icon            | Click      | Clicking the likes icon it changes to solid red                                                                                             | Pass      |
-| Bookmark icon         | Click      | If user is not logged in none happens                                                                                                       | Pass      |
-| Bookmark icon         | Click      | Clicking the bookmark icon it changes to solid grey                                                                                         | Pass      |
-| Edit Recipe icon      | Display    | Only visible if the user is logged in                                                                                                       | Pass      |
-| Edit Recipe icon      | Click      | Open Edit a Recipe page                                                                                                                     | Pass      |
-| Delete Recipe icon    | Display    | Only visible if the user is logged in                                                                                                       | Pass      |
-| Delete Recipe icon    | Click      | Open a page where the user needs to confirm deletion                                                                                        | Pass      |
-| Personal Recipes Link | Display    | Only visible if the user is logged in                                                                                                       | Pass      |
-| Personal Recipes Link | Click      | Open Personal Recipes page                                                                                                                  | Pass      |
-| Favourites Link       | Display    | Only visible if the user is logged in                                                                                                       | Pass      |
-| Favourites Link       | Click      | Open Favourite Recipes page                                                                                                                 | Pass      |
-| Sign Out Link         | Display    | Only visible if the user is logged in                                                                                                       | Pass      |
-| Sign Out Link         | Click      | Open Sign Out confirm page                                                                                                                  | Pass      |
-| Hamburger Menu        | Responsive | Display when screen size reduces to large size                                                                                              | Pass      |
-| Link in footer        | Click      | Open in new tab and to correct website                                                                                                      | Pass      |
-| Recipe Details        | Display    | Display correct recipe title, image, author, website, likes, bookmarks and comments icons, ingredients, Recipe details, method and comments | Pass      |
-| Likes icon            | Click      | If user is not logged in none happens                                                                                                       | Pass      |
-| Likes icon            | Click      | Clicking the likes icon it changes to solid red                                                                                             | Pass      |
-| Bookmark icon         | Click      | If user is not logged in none happens                                                                                                       | Pass      |
-| Bookmark icon         | Click      | Clicking the bookmark icon it changes to solid grey                                                                                         | Pass      |
-| User Comments         | Display    | Displays correct name date time and comment                                                                                                 | Pass      |
-| User Comments         | Display    | Comments are ordered oldest to newest                                                                                                       | Pass      |
+| Element               | Action     | Pass/Fail | Description |
+|-----------------------|------------|-----------|-------------|
+| Logo area             | Click      | Pass      | Redirect to home|
+| Home Link      | Click      | Pass      | Redirect to home page|
+| Sell your car Link (Navbar)        | Click      | Pass      | Open Sell your car form page  |
+| Sell your car Link (Navbar)          | Display    | Pass      | Not visible if the user is not logged in      |
+| Title of an advert     | Click      | Pass      | Open the details of that particular advert |
+| Sign Up Link          | Click      | Pass      | Open Sign up page   |
+| Sign Up Link          | Display    | Pass      | Not visible if the user is logged in   |
+| Sign In Link           | Click      | Pass      | Open Login page   |
+| Sign In Link           | Display    | Pass      | Not visible if the user is logged in  |
+| Profile Link       | Display    | Pass      | Only visible if the user is logged in  |
+| Profile Link       | Click      | Pass      | Open Profile page  |
+| Edit image & Email Link  | Display    | Pass      | Only visible if the user is logged in  |
+| Edit image & Email Link  | Click      | Pass      | Open Change image and email page   |
+| Change Username Link  | Display    | Pass      | Only visible if the user is logged in  |
+| Change Username Link  | Click      | Pass      | Open Change Username page   |
+| Change Password Link  | Display    | Pass      | Only visible if the user is logged in  |
+| Change Password Link  | Click      | Pass      | Open Change Password page   |
+| Edit advert icon      | Display    | Pass      | Only visible if the user is logged in and he/she is the advert's owner  |
+| Edit advert icon      | Click      | Pass      | Open Edit an advert page   |
+| Delete advert icon    | Display    | Pass      | Only visible if the user is logged in and he/she is the advert's owner |
+| Delete advert icon    | Click      | Pass      | Open a pop-up where the user needs to confirm deletion  |
+| Sign Out Link         | Display    | Pass      | Only visible if the user is logged in  |
+| Sign Out Link         | Click      | Pass      | Open pop-up where the user needs to confirm to Sign Out  |
+| Hamburger Menu        | Responsive | Pass      | Display when screen size reduces to medium size (below 768px)  |
+| Car/advert Details    | Display    | Pass      | Correctly displays advert title, image, city, created on, price, owner, car details, description, vehicle history and message box |
+| User message         | Display    | Pass      | Displays correct name, date, time, and message  |
+| User message         | Display    | Pass      | Messages are ordered oldest to newest   |
+| User message         | Display    | Pass      | Messages are shown if the user is logged in, otherwise an invite to sign in is shown |
+
 
 ## Bugs
 
 ### Fixed bugs
 
-#### Footer not staying at the bottom of the page
+#### Error "Cannot read properties of null" when creating an advert
 
-- **Fix** I set “main” bottom margin and I created a new class “main-min-height” and set the min height.
+- **Fix** With the help of a Code Institute tutor, we write the code to check if there was an image to append before trying to appending it. If there was no image, a "default~" image was appended from the API.
 
-#### Number of comments not correct in the recipe detail page
+#### Error 400 (Bad Request) when sending the form for editing the profile image or email
 
-- **Bug** The number of comments was not correct in the recipe detail page showing the sum of all comments (included the not approved once)
-- **Fix** I Added to models.py “approved_comments”.
-
-#### Error 404 when creating a recipe
-
-- **Fix** I changed the queryset of from filter status=1 to get all.
-
-#### Error 500 when deleting a recipe
-
-- **Fix** I added "success_url" in the "RecipeDeleteView".
-
-#### Error 500 when a new user Signs up and try to enter in the Profile page
-
-- **Fix** Solution obtained following the video at this [link](https://www.youtube.com/watch?v=Kc1Q_ayAeQk).
+- **Fix** I allowend the image and the email to be "blank" in the Profile model.
 
 ### Unfixed bugs
 
