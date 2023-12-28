@@ -301,7 +301,9 @@ Clicking on a car's title in the advert's card provides more detailed informatio
 
 Users have the option to Sign up and Sign in. Upon signing in, a Profile page is created, offering useful links such as "Edit image and Email," "Change Username," and "Change Password."
 
-While signed in, users can send messages to the owners of adverts on a car's page, a feature unavailable to non-signed-in users. Signed-in users can also create, edit, and delete their own adverts but cannot modify or delete adverts created by others.
+While signed in, users can send messages to the owners of adverts on a car's page, a feature unavailable to non-signed-in users. 
+Due to their nature as messages, as opposed to comments, and due to considerations such as maintaining integrity, trust, and communication history, logged-in users do not possess the capability to modify or delete the messages they have sent.
+Signed-in users can also create, edit, and delete their own adverts but cannot modify or delete adverts created by others.
 
 ![Home page - Logged in](docs/features_images/home_logged%20in.png)
 
